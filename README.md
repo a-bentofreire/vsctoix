@@ -2,91 +2,91 @@
 
 Strap on the belt and become a Ninja Developer with these 19 utilities.  
 
-https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/demo.gif
+![Demo](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/demo.gif)
 
 ## Utilities
 
 * Transform Text Utilities
-   * Capitalize <code>e.g. classNameFunc  ->  ClassNameFunc</code>
-   * Camel Case <code>e.g. ClassNameFunc  ->  classNameFunc</code>
+   * Capitalize ```e.g. classNameFunc  ->  ClassNameFunc```
+   * Camel Case ```e.g. ClassNameFunc  ->  classNameFunc```
    * Add Space before Uppercase - **Useful to transform functions names into documentation**  
- <code>e.g. doActionBefore  ->  do Action Before</code>
+ ```e.g. doActionBefore  ->  do Action Before```
    * Reverse Assignment - **Reverses the terms of assignments or equal/different comparisons**  
- <code>e.g. x == y[x] + 5  ->  y[x] + 5 == x</code>
+ ```e.g. x == y[x] + 5  ->  y[x] + 5 == x```
    * Unix To Win Slash - **Converts slashes to backslashes**  
- <code>e.g. chocolate/candy  ->  chocolate\candy</code>
+ ```e.g. chocolate/candy  ->  chocolate\candy```
    * Win To Unix Slash - **Converts backslashes to slashes**  
- <code>e.g. chocolate\candy  ->  chocolate/candy</code>
-   * Single To Double Slash <code>e.g. find\nagain  ->  find\\\nagain</code>
-   * Double To Single Slash <code>e.g. find\\\nagain -> find\nagain</code>
-   * Url Encode <code>e.g. https://github.com  ->  https%3A%2F%2Fgithub.com</code>
-   * Url Decode <code>e.g. https%3A%2F%2Fgithub.com  ->  https://github.com</code>
+ ```e.g. chocolate\candy  ->  chocolate/candy```
+   * Single To Double Slash ```e.g. find\nagain  ->  find\\\nagain```
+   * Double To Single Slash ```e.g. find\\\nagain -> find\nagain```
+   * Url Encode ```e.g. https://github.com  ->  https%3A%2F%2Fgithub.com```
+   * Url Decode ```e.g. https%3A%2F%2Fgithub.com  ->  https://github.com```
 
 * Line Utilities
    * Remove Duplicated Lines - **Removes consecutive duplicated lines**  
+  
+e.g.  
+>first  
+>second  
+>second  
+>->  
+>first  
+>second  
 
-       <code>e.g.  
-    first  
-    second  
-    second  
-    ->  
-    first  
-    second  
-</code>
-   * Remove Empty Lines
-       <code>e.g.  
-    first  
-      
-    second  
-    ->  
-    first  
-    second  
-</code>
+   * Remove Empty Lines  
+e.g.  
+>first  
+>  
+>second  
+>->  
+>first  
+>second  
+
    * Join Lines - **Joins lines adding the computed expression at the end of every line**  
+  
+e.g.  
+>red  
+>green  
+>-> expr:(x\c{X0A}),  
+>red(x0A),green(x0B)  
 
-       <code>e.g.  
-    red  
-    green  
-    -> expr:(x\c{X0A}),  
-    red(x0A),green(x0B)  
-</code>
    * Split Lines - **Split lines by an expression. Dynamic values aren't supported**  
+  
+e.g.  
+>red,green  
+>-> expr: = \c{1}  
+>red = 1  
+>green = 2  
 
-       <code>e.g.  
-    red,green  
-    -> expr: = \c{1}  
-    red = 1  
-    green = 2  
-</code>
    * Sort Numerically Ascending - **For each line uses the first number as sort key**  
+  
+e.g.  
+>10. red  
+>2. green  
+>->  
+>2. green  
+>10. red  
 
-       <code>e.g.  
-    10. red  
-    2. green  
-    ->  
-    2. green  
-    10. red  
-</code>
 
 * Insert Text Utilities
-   * Insert ISODate <code>e.g. 2018-02-08</code>
-   * Insert UUID <code>e.g. 7fff60f8-91e8-40ba-9053-56b0f3a487f0</code>
-   * Insert Text At End
-       <code>e.g.  
-    red  
-    green  
-    -> expr: = \c{1}  
-    red = 1  
-    green = 2  
-</code>
-   * Insert Text At Start
-       <code>e.g.  
-    red  
-    green  
-    ->expr: const \e{upper} =  
-    const RED = red  
-    const GREEN = green  
-</code>
+   * Insert ISODate ```e.g. 2018-02-08```
+   * Insert UUID ```e.g. 7fff60f8-91e8-40ba-9053-56b0f3a487f0```
+   * Insert Text At End  
+e.g.  
+>red  
+>green  
+>-> expr: = \c{1}  
+>red = 1  
+>green = 2  
+
+   * Insert Text At Start  
+e.g.  
+>red  
+>green  
+>->expr: const \e{upper} =  
+>const RED = red  
+>const GREEN = green  
+
 
 
 ## Selection Policies

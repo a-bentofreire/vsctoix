@@ -170,9 +170,9 @@ function run(): void {
           utilityTable[utilityCat].map(utility => {
             let eg = utility.eg;
             if (eg) {
-              if (eg.indexOf('||') === -1) eg = ` <code>e.g. ${eg}</code>`;
+              if (eg.indexOf('||') === -1) eg = ' ```e.g. ' + eg + '```';
               else {
-                eg = `\n       <code>e.g.  \n    ` + eg.replace(/\|\|/g, '  \n    ') + '  \n</code>';
+                eg = '  \ne.g.  \n>' + eg.replace(/\|\|/g, '  \n>') + '  \n';
               }
             }
             let title = utility.title;
