@@ -1,0 +1,58 @@
+{
+    "name": "vsctoix",
+    "displayName": "vsctoix",
+    "description": "VS Code Utility Belt. Text transformations, insertions and sorting",
+    "version": "0.1.0",
+    "publisher": "a-bentofreire",
+	"keywords": [
+        "__KEYWORDS__"
+	],
+	"icon": "assets/icon128.png",
+	"readme": "README.md",
+	"author": {
+		"name": "Alexandre Bento Freire",
+		"email": "code@a-bentofreire.com",
+		"url": "https://github.com/a-bentofreire"
+	},
+	"license": "SEE LICENSE IN LICENSE.txt",
+    "engines": {
+        "vscode": "^1.18.0"
+    },
+
+	"homepage": "https://github.com/a-bentofreire/vsctoix",
+	"bugs": "https://github.com/a-bentofreire/vsctoix/issues",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/a-bentofreire/vsctoix"
+	},
+
+    "categories": [
+        "Other"
+    ],
+    "WARNING": "----- __AUTO_GEN_WARN__ ------",
+
+    "activationEvents": [
+"__ACTIVATIONEVENTS__"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "commands": [
+"__COMMANDS__"
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test",
+        "prepsource": "cd out/tools && node gen-utilities-data.js"
+
+    },
+    "devDependencies": {
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.6",
+        "@types/node": "^7.0.43",
+        "@types/mocha": "^2.2.42"
+    }
+}
