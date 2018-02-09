@@ -2,6 +2,7 @@
 .vscode-test/**
 out/test/**
 out/**/*.map
+out/tools/**
 src/**
 info/**
 assets/*.svg
@@ -9,4 +10,4 @@ assets/demo/*
 *_.in*
 .gitignore
 tsconfig.json
-vsc-extension-quickstart.md
+private/**
