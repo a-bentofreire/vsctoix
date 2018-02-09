@@ -98,8 +98,8 @@ function buildMacros(utilities: TUtility[]): TMacro[] {
 // ------------------------------------------------------------------------
 //                               run
 // ------------------------------------------------------------------------
-
-function run(): void {
+// WARN: Don't name it as 'run' since it conflicts with mocha/index.d.ts
+function runGenerator(): void {
 
   console.log('  >> Started <<');
 
@@ -194,4 +194,4 @@ function run(): void {
   console.log('  >> Done <<');
 }
 
-run();
+runGenerator();

@@ -4,52 +4,31 @@
     "description": "VS Code Utility Belt. Text transformations, insertions and sorting",
     "version": "0.1.0",
     "publisher": "a-bentofreire",
-	"keywords": [
-        "capitalize",
-"camel",
-"camelcase",
-"space",
-"assignment",
-"reverse",
-"slash",
-"windows",
-"unix",
-"single slash",
-"double slash",
-"encode",
-"urldecode",
-"decode",
-"remove",
-"duplicates",
-"empty",
-"join",
-"lines",
-"split",
-"sort",
-"date",
-"uuid",
-"guid",
-"insert",
-"text"
-	],
-	"icon": "assets/icon128.png",
-	"readme": "README.md",
-	"author": {
-		"name": "Alexandre Bento Freire",
-		"email": "code@a-bentofreire.com",
-		"url": "https://github.com/a-bentofreire"
-	},
-	"license": "SEE LICENSE IN LICENSE.txt",
+    "keywords": [
+        "transform",
+        "insert",
+        "case",
+        "slash",
+        "encode"
+    ],
+    "icon": "assets/icon128.png",
+    "readme": "README.md",
+    "author": {
+        "name": "Alexandre Bento Freire",
+        "email": "code@a-bentofreire.com",
+        "url": "https://github.com/a-bentofreire"
+    },
+    "license": "SEE LICENSE IN LICENSE.txt",
     "engines": {
         "vscode": "^1.18.0"
     },
 
-	"homepage": "https://github.com/a-bentofreire/vsctoix",
-	"bugs": "https://github.com/a-bentofreire/vsctoix/issues",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/a-bentofreire/vsctoix"
-	},
+    "homepage": "https://github.com/a-bentofreire/vsctoix",
+    "bugs": "https://github.com/a-bentofreire/vsctoix/issues",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/a-bentofreire/vsctoix"
+    },
 
     "categories": [
         "Other"
@@ -57,48 +36,104 @@
     "WARNING": "----- This file is generated automatically by npm run source ------",
 
     "activationEvents": [
-"onCommand:editor.capitalize",
-"onCommand:editor.camelCase",
-"onCommand:editor.spaceByUpper",
-"onCommand:editor.reverseAssignment",
-"onCommand:editor.unixToWinSlash",
-"onCommand:editor.winToUnixSlash",
-"onCommand:editor.singleToDoubleSlash",
-"onCommand:editor.doubleToSingleSlash",
-"onCommand:editor.urlEncode",
-"onCommand:editor.urlDecode",
-"onCommand:editor.removeDuplicatedLines",
-"onCommand:editor.removeEmptyLines",
-"onCommand:editor.joinLines",
-"onCommand:editor.splitLines",
-"onCommand:editor.sortNumericallyAscending",
-"onCommand:editor.insertISODate",
-"onCommand:editor.insertUUID",
-"onCommand:editor.insertTextAtEnd",
-"onCommand:editor.insertTextAtStart"
+        "onCommand:editor.capitalize",
+        "onCommand:editor.camelCase",
+        "onCommand:editor.spaceByUpper",
+        "onCommand:editor.reverseAssignment",
+        "onCommand:editor.unixToWinSlash",
+        "onCommand:editor.winToUnixSlash",
+        "onCommand:editor.singleToDoubleSlash",
+        "onCommand:editor.doubleToSingleSlash",
+        "onCommand:editor.urlEncode",
+        "onCommand:editor.urlDecode",
+        "onCommand:editor.removeDuplicatedLines",
+        "onCommand:editor.removeEmptyLines",
+        "onCommand:editor.joinLines",
+        "onCommand:editor.splitLines",
+        "onCommand:editor.sortNumericallyAscending",
+        "onCommand:editor.insertISODate",
+        "onCommand:editor.insertUUID",
+        "onCommand:editor.insertTextAtEnd",
+        "onCommand:editor.insertTextAtStart"
     ],
     "main": "./out/extension",
     "contributes": {
-        "commands": [
-{ "command": "editor.capitalize", "title": "IX: Capitalize"},
-{ "command": "editor.camelCase", "title": "IX: Camel Case"},
-{ "command": "editor.spaceByUpper", "title": "IX: Add Space before Uppercase"},
-{ "command": "editor.reverseAssignment", "title": "IX: Reverse Assignment"},
-{ "command": "editor.unixToWinSlash", "title": "IX: Unix To Win Slash"},
-{ "command": "editor.winToUnixSlash", "title": "IX: Win To Unix Slash"},
-{ "command": "editor.singleToDoubleSlash", "title": "IX: Single To Double Slash"},
-{ "command": "editor.doubleToSingleSlash", "title": "IX: Double To Single Slash"},
-{ "command": "editor.urlEncode", "title": "IX: Url Encode"},
-{ "command": "editor.urlDecode", "title": "IX: Url Decode"},
-{ "command": "editor.removeDuplicatedLines", "title": "IX: Remove Duplicated Lines"},
-{ "command": "editor.removeEmptyLines", "title": "IX: Remove Empty Lines"},
-{ "command": "editor.joinLines", "title": "IX: Join Lines"},
-{ "command": "editor.splitLines", "title": "IX: Split Lines"},
-{ "command": "editor.sortNumericallyAscending", "title": "IX: Sort Numerically Ascending"},
-{ "command": "editor.insertISODate", "title": "IX: Insert ISODate"},
-{ "command": "editor.insertUUID", "title": "IX: Insert UUID"},
-{ "command": "editor.insertTextAtEnd", "title": "IX: Insert Text At End"},
-{ "command": "editor.insertTextAtStart", "title": "IX: Insert Text At Start"}
+        "commands": [{
+                "command": "editor.capitalize",
+                "title": "IX: Capitalize"
+            },
+            {
+                "command": "editor.camelCase",
+                "title": "IX: Camel Case"
+            },
+            {
+                "command": "editor.spaceByUpper",
+                "title": "IX: Add Space before Uppercase"
+            },
+            {
+                "command": "editor.reverseAssignment",
+                "title": "IX: Reverse Assignment"
+            },
+            {
+                "command": "editor.unixToWinSlash",
+                "title": "IX: Unix To Win Slash"
+            },
+            {
+                "command": "editor.winToUnixSlash",
+                "title": "IX: Win To Unix Slash"
+            },
+            {
+                "command": "editor.singleToDoubleSlash",
+                "title": "IX: Single To Double Slash"
+            },
+            {
+                "command": "editor.doubleToSingleSlash",
+                "title": "IX: Double To Single Slash"
+            },
+            {
+                "command": "editor.urlEncode",
+                "title": "IX: Url Encode"
+            },
+            {
+                "command": "editor.urlDecode",
+                "title": "IX: Url Decode"
+            },
+            {
+                "command": "editor.removeDuplicatedLines",
+                "title": "IX: Remove Duplicated Lines"
+            },
+            {
+                "command": "editor.removeEmptyLines",
+                "title": "IX: Remove Empty Lines"
+            },
+            {
+                "command": "editor.joinLines",
+                "title": "IX: Join Lines"
+            },
+            {
+                "command": "editor.splitLines",
+                "title": "IX: Split Lines"
+            },
+            {
+                "command": "editor.sortNumericallyAscending",
+                "title": "IX: Sort Numerically Ascending"
+            },
+            {
+                "command": "editor.insertISODate",
+                "title": "IX: Insert ISODate"
+            },
+            {
+                "command": "editor.insertUUID",
+                "title": "IX: Insert UUID"
+            },
+            {
+                "command": "editor.insertTextAtEnd",
+                "title": "IX: Insert Text At End"
+            },
+            {
+                "command": "editor.insertTextAtStart",
+                "title": "IX: Insert Text At Start"
+            }
         ]
     },
     "scripts": {

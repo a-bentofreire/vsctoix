@@ -5,7 +5,11 @@
     "version": "0.1.0",
     "publisher": "a-bentofreire",
 	"keywords": [
-        "__KEYWORDS__"
+        "transform",
+        "insert",
+        "case",
+        "slash",
+        "encode"
 	],
 	"icon": "assets/icon128.png",
 	"readme": "README.md",

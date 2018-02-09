@@ -12,6 +12,7 @@
     "exclude": [
         "node_modules",
         "**/*_.in.ts",
-        ".vscode-test"
+        ".vscode-test",
+        "test/**"
     ]
 }
