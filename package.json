@@ -3,7 +3,7 @@
     "displayName": "vsctoix",
     "description": "VS Code Utility Belt. Text transformations, insertions and sorting",
     "version": "0.2.2",
-    "publisher": "Alexandre Bento Freire",
+    "publisher": "a-bentofreire",
 	"keywords": [
         "transform",
         "insert",
