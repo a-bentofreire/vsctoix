@@ -1,28 +1,10 @@
 'use strict';
 // uuid: d477c481-d965-4afa-baac-56343a395d74
-/**
- * @preserve Copyright (c) 2018 Alexandre Bento Freire. All rights reserved.
- * @author Alexandre Bento Freire
- *
- * Permission is hereby granted, free of charge, to any person obtaining a
- * copy of this software and associated documentation files (the "Software"),
- * to deal in the Software without restriction, including without limitation
- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
- * and/or sell copies of the Software, and to permit persons to whom the
- * Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice, and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
- * DEALINGS IN THE SOFTWARE.
- *
- */
+
+// ------------------------------------------------------------------------
+// Copyright (c) 2018 Alexandre Bento Freire. All rights reserved.
+// Licensed under the MIT License+uuid License. See License.txt for details
+// ------------------------------------------------------------------------
 
 import * as vscode from 'vscode';
 import * as um from './utilitymanager';
@@ -35,7 +17,8 @@ import * as ep from './expressionprocessor';
 // ------------------------------------------------------------------------
 
 // ------------------------------------------------------------------------
-//                               Utility: removeDuplicatedLines
+// $utility: removeDuplicatedLines
+//
 // $keywords: remove, duplicates
 // $eg: first||second||second||->||first||second
 // $desc: Removes consecutive duplicated lines
@@ -56,7 +39,8 @@ export function removeDuplicatedLines(): void {
 }
 
 // ------------------------------------------------------------------------
-//                               Utility: removeEmptyLines
+// $utility: removeEmptyLines
+//
 // $keywords: remove, empty
 // $eg: first||||second||->||first||second
 // ------------------------------------------------------------------------
@@ -76,7 +60,8 @@ export function removeEmptyLines(): void {
 }
 
 // ------------------------------------------------------------------------
-//                               Utility: joinLines
+// $utility: joinLines
+//
 // $keywords: join, lines
 // $eg: red||green||-> expr:(x\c{X0A}),||red(x0A),green(x0B)
 // $desc: Joins lines adding the computed expression at the end of every line
@@ -107,7 +92,8 @@ export function joinLines(): void {
 }
 
 // ------------------------------------------------------------------------
-//                               Utility: splitLines
+// $utility: splitLines
+//
 // $keywords: split, lines
 // $eg: red,green||-> expr: = \c{1}||red = 1||green = 2
 // $desc: Split lines by an expression. Dynamic values aren't supported
@@ -130,7 +116,8 @@ export function splitLines(): void {
 }
 
 // ------------------------------------------------------------------------
-//                               Utility: sortNumericallyAscending
+// $utility: sortNumericallyAscending
+//
 // $keywords: sort
 // $eg: 10. red||2. green||->||2. green||10. red
 // $desc: For each line uses the first number as sort key
@@ -149,4 +136,35 @@ export function sortNumericallyAscending(): void {
       keylines.sort((a, b) => a[0] - b[0]);
       return keylines.map(keypair => keypair[1]);
     });
+}
+
+// ------------------------------------------------------------------------
+// $utility: indentOneSpace
+//
+// $keywords: indent
+// $eg: __NONE__
+// $desc: Adds one space to the beginning of each line
+// ------------------------------------------------------------------------
+
+export function indentOneSpace(): void {
+  um.utilityManager({
+    utilType: um.TIXUtilityType.utLineUtility,
+  },
+    (up): string => ' ' + up.intext);
+}
+
+// ------------------------------------------------------------------------
+// $utility: outdentOneSpace
+//
+// $keywords: indent
+// $eg: __NONE__
+// $desc: Removes one space to the beginning of each line
+// ------------------------------------------------------------------------
+
+export function outdentOneSpace(): void {
+  um.utilityManager({
+    utilType: um.TIXUtilityType.utLineUtility,
+  },
+    (up): string => up.intext !== '' && up.intext[0] === ' ' ? 
+    up.intext.substr(1): up.intext);
 }

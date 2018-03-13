@@ -1,36 +1,14 @@
 'use strict';
 // uuid: c6f19622-ddfd-4987-8823-85301440bc7e
-/**
- * @preserve Copyright (c) 2018 Alexandre Bento Freire. All rights reserved.
- * @author Alexandre Bento Freire
- *
- * Permission is hereby granted, free of charge, to any person obtaining a
- * copy of this software and associated documentation files (the "Software"),
- * to deal in the Software without restriction, including without limitation
- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
- * and/or sell copies of the Software, and to permit persons to whom the
- * Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice, and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
- * DEALINGS IN THE SOFTWARE.
- *
- */
+
+// ------------------------------------------------------------------------
+// Copyright (c) 2018 Alexandre Bento Freire. All rights reserved.
+// Licensed under the MIT License+uuid License. See License.txt for details
+// ------------------------------------------------------------------------
 
 // ------------------------------------------------------------------------
 //                               utilities
 // ------------------------------------------------------------------------
-
-export function ISODate(): string {
-  return new Date().toISOString().substr(0, 10);
-}
 
 // this function is credited to @broofa
 // https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
@@ -39,6 +17,29 @@ export function uuidv4(): string {
     var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
     return v.toString(16);
   });
+}
+
+// this function is credited to @Flygenring
+// https://stackoverflow.com/questions/10830357/javascript-toisostring-ignores-timezone-offset
+export function getLocalISOTimeDate() {
+  let tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+  return (new Date(Date.now() - tzoffset)).toISOString().substr(0, 19).replace('T', ' ');
+}
+
+
+export function ISODate(): string {
+  return getLocalISOTimeDate().substr(0, 10);
+}
+
+export function ISOTimeDate(): string {
+  return getLocalISOTimeDate();
+}
+
+export function regnize(text: string, isFind: boolean): string {
+  const
+    REGNIZEFIND = /([\\.()\[\]*+\^$])/g,
+    REGNIZEREPL = '\\$1';
+  return text.replace(isFind ? REGNIZEFIND : /(\$\d)/g, REGNIZEREPL);
 }
 
 // ------------------------------------------------------------------------
@@ -50,7 +51,10 @@ function processMacro(macro: string, inpText: string): string {
     case 'upper': return inpText.toUpperCase();
     case 'lower': return inpText.toLowerCase();
     case 'capitalize': return inpText[0].toUpperCase() + inpText.substr(1);
+    case 'length': return inpText.length.toString();
+    case 'regnize': return regnize(inpText, true);
     case 'isodate': return ISODate();
+    case 'isotimedate': return ISOTimeDate();
     case 'uuid': return uuidv4();
   }
   return inpText;

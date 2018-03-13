@@ -1,6 +1,6 @@
 # VS Code Utility Belt
 
-Strap on the belt and become a Ninja Developer with these 19 utilities.  
+Strap on the belt and become a Ninja Developer with these 23 utilities.  
 
 ![Demo](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/demo.gif)
 
@@ -21,6 +21,8 @@ Strap on the belt and become a Ninja Developer with these 19 utilities.
    * Double To Single Slash ```e.g. find\\\nagain -> find\nagain```
    * Url Encode ```e.g. https://github.com  ->  https%3A%2F%2Fgithub.com```
    * Url Decode ```e.g. https%3A%2F%2Fgithub.com  ->  https://github.com```
+   * Regnize - **Adds slash to regular expression metachars**  
+ ```e.g. (\w+)[A-Z]a*b+text  ->  \(\\w\+\)\[A-Z\]a\*b\+text```
 
 * Line Utilities
    * Remove Duplicated Lines - **Removes consecutive duplicated lines**  
@@ -67,9 +69,14 @@ e.g.
 >2. green  
 >10. red  
 
+   * Indent One Space - **Adds one space to the beginning of each line**  
+
+   * Outdent One Space - **Removes one space to the beginning of each line**  
+
 
 * Insert Text Utilities
-   * Insert ISODate ```e.g. 2018-02-08```
+   * Insert ISO Date ```e.g. 2018-02-08```
+   * Insert ISO TimeDate ```e.g. 2018-02-08 10:12:15```
    * Insert UUID ```e.g. 7fff60f8-91e8-40ba-9053-56b0f3a487f0```
    * Insert Text At End  
 e.g.  
@@ -119,11 +126,16 @@ An expression is a text supporting the following metachars:
     function list:  
     - upper - UpperCase  
     - lower - LowerCase  
+    - length - Selected text length  
     - capitalize  
     - isodate  
+    - isotimedate  
     - uuid  
 
 ## Contribute
 
-Suggestions for more utilities and bug reports are welcome 
-but don't forget the golden rule: Be Polite!  
+Suggestions for more utilities and bug reports are welcome but don't forget the golden rule: Be Polite!  
+
+## License
+
+[MIT License+uuid License](https://github.com/a-bentofreire/uuid-licenses/blob/master/MIT-uuid-license.md)

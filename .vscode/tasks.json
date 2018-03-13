@@ -18,12 +18,12 @@
         },
         {
             "type": "npm",
-            "script": "vscode:prepublish",
+            "script": "compile",
             "problemMatcher": []
         },
         {
             "type": "npm",
-            "script": "vscode:prepsource",
+            "script": "gen-utilities-data",
             "problemMatcher": []
         }
     ]

@@ -1,31 +1,14 @@
 'use strict';
 // uuid: 3ea0fe12-a11b-4fde-9d68-ccd7a3ee7208
-/**
- * @preserve Copyright (c) 2018 Alexandre Bento Freire. All rights reserved.
- * @author Alexandre Bento Freire
- *
- * Permission is hereby granted, free of charge, to any person obtaining a
- * copy of this software and associated documentation files (the "Software"),
- * to deal in the Software without restriction, including without limitation
- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
- * and/or sell copies of the Software, and to permit persons to whom the
- * Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice, and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
- * DEALINGS IN THE SOFTWARE.
- *
- */
+
+// ------------------------------------------------------------------------
+// Copyright (c) 2018 Alexandre Bento Freire. All rights reserved.
+// Licensed under the MIT License+uuid License. See License.txt for details
+// ------------------------------------------------------------------------
 
 import * as vscode from 'vscode';
 import * as um from './utilitymanager';
+import * as ep from './expressionprocessor';
 
 // ------------------------------------------------------------------------
 //                               In Transform Utilities
@@ -34,7 +17,7 @@ import * as um from './utilitymanager';
 // ------------------------------------------------------------------------
 
 // ------------------------------------------------------------------------
-//                               Utility: capitalize
+// $utility: capitalize
 //
 // $keywords: capitalize
 // $eg: classNameFunc  ->  ClassNameFunc
@@ -48,7 +31,7 @@ export function capitalize(): void {
 }
 
 // ------------------------------------------------------------------------
-//                               Utility: camelCase
+// $utility: camelCase
 //
 // $keywords: camel, camelcase
 // $eg: ClassNameFunc  ->  classNameFunc
@@ -62,8 +45,8 @@ export function camelCase(): void {
 }
 
 // ------------------------------------------------------------------------
-//                               Utility: spaceByUpper
-
+// $utility: spaceByUpper
+//
 // $title: Add Space before Uppercase
 // $keywords: space, assignment
 // $eg: doActionBefore  ->  do Action Before
@@ -78,7 +61,7 @@ export function spaceByUpper(): void {
 }
 
 // ------------------------------------------------------------------------
-//                               Utility: reverseAssignment
+// $utility: reverseAssignment
 //
 // $keywords: reverse, assignment
 // $eg: x == y[x] + 5  ->  y[x] + 5 == x
@@ -93,7 +76,7 @@ export function reverseAssignment(): void {
 }
 
 // ------------------------------------------------------------------------
-//                               Utility: unixToWinSlash
+// $utility: unixToWinSlash
 //
 // $keywords: slash, windows, unix
 // $eg: chocolate/candy  ->  chocolate\candy
@@ -108,7 +91,7 @@ export function unixToWinSlash(): void {
 }
 
 // ------------------------------------------------------------------------
-//                               Utility: winToUnixSlash
+// $utility: winToUnixSlash
 //
 // $keywords: slash, windows, unix
 // $eg: chocolate\candy  ->  chocolate/candy
@@ -123,7 +106,7 @@ export function winToUnixSlash(): void {
 }
 
 // ------------------------------------------------------------------------
-//                               Utility: singleToDoubleSlash
+// $utility: singleToDoubleSlash
 //
 // $keywords: slash, single slash, double slash
 // $eg: find\nagain  ->  find\\\nagain
@@ -137,7 +120,7 @@ export function singleToDoubleSlash(): void {
 }
 
 // ------------------------------------------------------------------------
-//                               Utility: doubleToSingleSlash
+// $utility: doubleToSingleSlash
 //
 // $keywords: slash, single slash, double slash
 // $eg: find\\\nagain -> find\nagain
@@ -151,7 +134,8 @@ export function doubleToSingleSlash(): void {
 }
 
 // ------------------------------------------------------------------------
-//                               Utility: urlEncode
+// $utility: urlEncode
+//
 // $keywords: encode, urldecode
 // $eg: https://github.com  ->  https%3A%2F%2Fgithub.com
 // ------------------------------------------------------------------------
@@ -164,7 +148,8 @@ export function urlEncode(): void {
 }
 
 // ------------------------------------------------------------------------
-//                               Utility: urlDecode
+// $utility: urlDecode
+//
 // $keywords: decode, urldecode
 // $eg: https%3A%2F%2Fgithub.com  ->  https://github.com
 // ------------------------------------------------------------------------
@@ -174,5 +159,20 @@ export function urlDecode(): void {
     um.utilityManager({
         utilType: um.TIXUtilityType.utTransform
     }, (up): string => decodeURIComponent(up.intext));
+}
+
+// ------------------------------------------------------------------------
+// $utility: regnize
+//
+// $desc: Adds slash to regular expression metachars
+// $keywords: regular expressions
+// $eg: (\w+)[A-Z]a*b+text  ->  \(\\w\+\)\[A-Z\]a\*b\+text
+// ------------------------------------------------------------------------
+
+export function regnize(): void {
+
+    um.utilityManager({
+        utilType: um.TIXUtilityType.utTransform
+    }, (up): string => ep.regnize(up.intext, true));
 }
 

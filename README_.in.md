@@ -5,7 +5,7 @@ Strap on the belt and become a Ninja Developer with these __UTILITYCOUNT__ utili
 ![Demo](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/demo.gif)
 
 ## Utilities
-__UTILITYLISTTABLE__
+__UTILITY_LIST_TABLE__
 
 
 ## Selection Policies
@@ -38,11 +38,16 @@ An expression is a text supporting the following metachars:
     function list:  
     - upper - UpperCase  
     - lower - LowerCase  
+    - length - Selected text length  
     - capitalize  
     - isodate  
+    - isotimedate  
     - uuid  
 
 ## Contribute
 
-Suggestions for more utilities and bug reports are welcome 
-but don't forget the golden rule: Be Polite!  
+Suggestions for more utilities and bug reports are welcome but don't forget the golden rule: Be Polite!  
+
+## License
+
+[MIT License+uuid License](https://github.com/a-bentofreire/uuid-licenses/blob/master/MIT-uuid-license.md)

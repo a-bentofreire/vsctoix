@@ -2,8 +2,8 @@
     "name": "vsctoix",
     "displayName": "vsctoix",
     "description": "VS Code Utility Belt. Text transformations, insertions and sorting",
-    "version": "0.1.0",
-    "publisher": "a-bentofreire",
+    "version": "0.2.2",
+    "publisher": "Alexandre Bento Freire",
 	"keywords": [
         "transform",
         "insert",
@@ -15,7 +15,7 @@
 	"readme": "README.md",
 	"author": {
 		"name": "Alexandre Bento Freire",
-		"email": "code@a-bentofreire.com",
+		"email": "dev@a-bentofreire.com",
 		"url": "https://github.com/a-bentofreire"
 	},
 	"license": "SEE LICENSE IN LICENSE.txt",
@@ -36,7 +36,7 @@
     "WARNING": "----- __AUTO_GEN_WARN__ ------",
 
     "activationEvents": [
-"__ACTIVATIONEVENTS__"
+"__ACTIVATION_EVENTS__"
     ],
     "main": "./out/extension",
     "contributes": {
@@ -48,15 +48,15 @@
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install",
         "test": "npm run compile && node ./node_modules/vscode/bin/test",
-        "prepsource": "cd out/tools && node gen-utilities-data.js"
+        "gen-utilities-data": "cd out/tools && node gen-utilities-data.js",
+        "postinstall": "node ./node_modules/vscode/bin/install"
 
     },
     "devDependencies": {
-        "typescript": "^2.6.1",
-        "vscode": "^1.1.6",
-        "@types/node": "^7.0.43",
-        "@types/mocha": "^2.2.42"
+        "@types/mocha": "^2.2.48",
+        "@types/node": "^9.4.5",
+        "typescript": "^2.7.1",
+        "vscode": "^1.1.10"
     }
 }

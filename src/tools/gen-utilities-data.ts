@@ -1,27 +1,10 @@
 'use strict';
-/**
- * @preserve Copyright (c) 2018 Alexandre Bento Freire. All rights reserved.
- * @author Alexandre Bento Freire
- *
- * Permission is hereby granted, free of charge, to any person obtaining a
- * copy of this software and associated documentation files (the "Software"),
- * to deal in the Software without restriction, including without limitation
- * the rights to use, copy, modify, merge, publish, distribute, sublicense,
- * and/or sell copies of the Software, and to permit persons to whom the
- * Software is furnished to do so, subject to the following conditions:
- *
- * The above copyright notice, and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
- * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
- * DEALINGS IN THE SOFTWARE.
- *
- */
+// uuid: 822965e4-2f5d-48ab-8707-d366e2b19136
+
+// ------------------------------------------------------------------------
+// Copyright (c) 2018 Alexandre Bento Freire. All rights reserved.
+// Licensed under the MIT License+uuid License. See License.txt for details
+// ------------------------------------------------------------------------
 
 /*
   This script scans typescripts for utilities,
@@ -33,7 +16,7 @@ var fs = require('fs');
 const INPUT_UTILITY_FILES = ['transformutilities', 'lineutilities', 'insertutilities'];
 const FOLDER = '../../src';
 const OUTPUT_FILES = ['extension.ts', '../package.json', '../README.md'];
-const AUTO_GEN_WARN = 'This file is generated automatically by npm run source';
+const AUTO_GEN_WARN = 'This file is generated automatically by npm run gen-utilities-data';
 
 // ------------------------------------------------------------------------
 //                               from systoix.js
@@ -80,17 +63,17 @@ function buildMacros(utilities: TUtility[]): TMacro[] {
 
   let actionDefs: string[] = [];
   let commands: string[] = [];
-  let activationEvents: string[] = [];
+  let ACTIVATION_EVENTS: string[] = [];
 
   utilities.forEach(utility => {
     actionDefs.push(`        { f: ${utility.funcstr}, id: 'editor.${utility.name}' }`);
     commands.push(`{ "command": "editor.${utility.name}", "title": "IX: ${utility.title}"}`);
-    activationEvents.push(`"onCommand:editor.${utility.name}"`);
+    ACTIVATION_EVENTS.push(`"onCommand:editor.${utility.name}"`);
   });
 
   macros.push({ key: '/* __UTILITYDEFS__ */', value: actionDefs.join(',\n') });
   macros.push({ key: '"__COMMANDS__"', value: commands.join(',\n') });
-  macros.push({ key: '"__ACTIVATIONEVENTS__"', value: activationEvents.join(',\n') });
+  macros.push({ key: '"__ACTIVATION_EVENTS__"', value: ACTIVATION_EVENTS.join(',\n') });
 
   return macros;
 }
@@ -119,7 +102,7 @@ function runGenerator(): void {
       return '';
     });
 
-    temText.replace(/Utility: (\w+)((?:.|\n|\r)*?)\s*\/\/\s+-{15,}/g, (match, name, paramData) => {
+    temText.replace(/\/\/\s*\$utility:\s*(\w+)((?:.|\n|\r)*?)\s*\/\/\s+-{15,}/g, (match, name, paramData) => {
 
       let utility: TUtility = {
         name: name,
@@ -164,11 +147,12 @@ function runGenerator(): void {
   macros.push({ key: '"__KEYWORDS__"', value: keywords.join(',\n') });
   macros.push({ key: '__UTILITYCOUNT__', value: utilities.length.toString() });
   macros.push({
-    key: '__UTILITYLISTTABLE__', value:
+    key: '__UTILITY_LIST_TABLE__', value:
       Object.keys(utilityTable).map(utilityCat => {
         return `\n* ${catTitles[utilityCat]}\n` +
           utilityTable[utilityCat].map(utility => {
             let eg = utility.eg;
+            if (eg === '__NONE__') eg = '';
             if (eg) {
               if (eg.indexOf('||') === -1) eg = ' ```e.g. ' + eg + '```';
               else {
