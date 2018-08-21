@@ -1,6 +1,6 @@
 # VS Code Utility Belt
 
-Strap on the belt and become a Ninja Developer with these 23 utilities.  
+Strap on the belt and become a Ninja Developer with these 24 utilities.  
 
 ![Demo](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/demo.gif)
 
@@ -23,6 +23,8 @@ Strap on the belt and become a Ninja Developer with these 23 utilities.
    * Url Decode ```e.g. https%3A%2F%2Fgithub.com  ->  https://github.com```
    * Regnize - **Adds slash to regular expression metachars**  
  ```e.g. (\w+)[A-Z]a*b+text  ->  \(\\w\+\)\[A-Z\]a\*b\+text```
+   * Header To Bookmark - **Converts markdown header text to Html Bookmark**  
+ ```e.g. Is this the header 你好?  ->  is-this-the-header-你好```
 
 * Line Utilities
    * Remove Duplicated Lines - **Removes consecutive duplicated lines**  

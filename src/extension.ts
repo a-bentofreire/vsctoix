@@ -38,6 +38,7 @@ export function activate(context: vscode.ExtensionContext) {
         { f: transformutilities.urlEncode, id: 'editor.urlEncode' },
         { f: transformutilities.urlDecode, id: 'editor.urlDecode' },
         { f: transformutilities.regnize, id: 'editor.regnize' },
+        { f: transformutilities.headerToBookmark, id: 'editor.headerToBookmark' },
         { f: lineutilities.removeDuplicatedLines, id: 'editor.removeDuplicatedLines' },
         { f: lineutilities.removeEmptyLines, id: 'editor.removeEmptyLines' },
         { f: lineutilities.joinLines, id: 'editor.joinLines' },

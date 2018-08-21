@@ -1,42 +1,42 @@
 {
-    "name": "vsctoix",
-    "displayName": "vsctoix",
-    "description": "VS Code Utility Belt. Text transformations, insertions and sorting",
-    "version": "0.2.2",
-    "publisher": "a-bentofreire",
-	"keywords": [
-        "transform",
-        "insert",
-        "case",
-        "slash",
-        "encode"
-	],
-	"icon": "assets/icon128.png",
-	"readme": "README.md",
-	"author": {
-		"name": "Alexandre Bento Freire",
-		"email": "dev@a-bentofreire.com",
-		"url": "https://github.com/a-bentofreire"
-	},
-	"license": "SEE LICENSE IN LICENSE.txt",
-    "engines": {
-        "vscode": "^1.18.0"
-    },
+  "name": "vsctoix",
+  "displayName": "vsctoix",
+  "description": "VS Code Utility Belt. Text transformations, insertions and sorting",
+  "version": "1.0.1",
+  "publisher": "a-bentofreire",
+  "keywords": [
+    "transform",
+    "insert",
+    "case",
+    "slash",
+    "encode"
+  ],
+  "icon": "assets/icon128.png",
+  "readme": "README.md",
+  "author": {
+    "name": "Alexandre Bento Freire",
+    "email": "dev@a-bentofreire.com",
+    "url": "https://github.com/a-bentofreire"
+  },
+  "license": "SEE LICENSE IN LICENSE.txt",
+  "engines": {
+    "vscode": "^1.18.0"
+  },
 
-	"homepage": "https://github.com/a-bentofreire/vsctoix",
-	"bugs": "https://github.com/a-bentofreire/vsctoix/issues",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/a-bentofreire/vsctoix"
-	},
+  "homepage": "https://github.com/a-bentofreire/vsctoix",
+  "bugs": "https://github.com/a-bentofreire/vsctoix/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/a-bentofreire/vsctoix"
+  },
 
-    "categories": [
-        "Other"
-    ],
-    "WARNING": "----- This file is generated automatically by npm run gen-utilities-data ------",
+  "categories": [
+    "Other"
+  ],
+  "WARNING": "----- This file is generated automatically by npm run gen-utilities-data ------",
 
-    "activationEvents": [
-"onCommand:editor.capitalize",
+  "activationEvents": [
+    "onCommand:editor.capitalize",
 "onCommand:editor.camelCase",
 "onCommand:editor.spaceByUpper",
 "onCommand:editor.reverseAssignment",
@@ -47,6 +47,7 @@
 "onCommand:editor.urlEncode",
 "onCommand:editor.urlDecode",
 "onCommand:editor.regnize",
+"onCommand:editor.headerToBookmark",
 "onCommand:editor.removeDuplicatedLines",
 "onCommand:editor.removeEmptyLines",
 "onCommand:editor.joinLines",
@@ -59,11 +60,11 @@
 "onCommand:editor.insertUUID",
 "onCommand:editor.insertTextAtEnd",
 "onCommand:editor.insertTextAtStart"
-    ],
-    "main": "./out/extension",
-    "contributes": {
-        "commands": [
-{ "command": "editor.capitalize", "title": "IX: Capitalize"},
+  ],
+  "main": "./out/extension",
+  "contributes": {
+    "commands": [
+      { "command": "editor.capitalize", "title": "IX: Capitalize"},
 { "command": "editor.camelCase", "title": "IX: Camel Case"},
 { "command": "editor.spaceByUpper", "title": "IX: Add Space before Uppercase"},
 { "command": "editor.reverseAssignment", "title": "IX: Reverse Assignment"},
@@ -74,6 +75,7 @@
 { "command": "editor.urlEncode", "title": "IX: Url Encode"},
 { "command": "editor.urlDecode", "title": "IX: Url Decode"},
 { "command": "editor.regnize", "title": "IX: Regnize"},
+{ "command": "editor.headerToBookmark", "title": "IX: Header To Bookmark"},
 { "command": "editor.removeDuplicatedLines", "title": "IX: Remove Duplicated Lines"},
 { "command": "editor.removeEmptyLines", "title": "IX: Remove Empty Lines"},
 { "command": "editor.joinLines", "title": "IX: Join Lines"},
@@ -86,21 +88,22 @@
 { "command": "editor.insertUUID", "title": "IX: Insert UUID"},
 { "command": "editor.insertTextAtEnd", "title": "IX: Insert Text At End"},
 { "command": "editor.insertTextAtStart", "title": "IX: Insert Text At Start"}
-        ]
-    },
-    "scripts": {
-        "vscode:prepublish": "npm run compile",
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "test": "npm run compile && node ./node_modules/vscode/bin/test",
-        "gen-utilities-data": "cd out/tools && node gen-utilities-data.js",
-        "postinstall": "node ./node_modules/vscode/bin/install"
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "publish": "vsce publish",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test",
+    "gen-utilities-data": "cd out/tools && node gen-utilities-data.js",
+    "postinstall": "node ./node_modules/vscode/bin/install"
 
-    },
-    "devDependencies": {
-        "@types/mocha": "^2.2.48",
-        "@types/node": "^9.4.5",
-        "typescript": "^2.7.1",
-        "vscode": "^1.1.10"
-    }
+  },
+  "devDependencies": {
+    "@types/mocha": "^2.2.48",
+    "@types/node": "^9.4.5",
+    "typescript": "^2.7.1",
+    "vscode": "^1.1.10"
+  }
 }

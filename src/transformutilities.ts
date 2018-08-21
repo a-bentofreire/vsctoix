@@ -24,10 +24,10 @@ import * as ep from './expressionprocessor';
 // ------------------------------------------------------------------------
 
 export function capitalize(): void {
-    um.utilityManager({
-        utilType: um.TIXUtilityType.utInTransform,
-        pat: /\b(_*\w)/g, repl: (match, p1: string) => p1.toUpperCase()
-    });
+  um.utilityManager({
+    utilType: um.TIXUtilityType.utInTransform,
+    pat: /\b(_*\w)/g, repl: (match, p1: string) => p1.toUpperCase()
+  });
 }
 
 // ------------------------------------------------------------------------
@@ -38,10 +38,10 @@ export function capitalize(): void {
 // ------------------------------------------------------------------------
 
 export function camelCase(): void {
-    um.utilityManager({
-        utilType: um.TIXUtilityType.utInTransform,
-        pat: /\b(_*\w)/g, repl: (match, p1: string) => p1.toLowerCase()
-    });
+  um.utilityManager({
+    utilType: um.TIXUtilityType.utInTransform,
+    pat: /\b(_*\w)/g, repl: (match, p1: string) => p1.toLowerCase()
+  });
 }
 
 // ------------------------------------------------------------------------
@@ -54,10 +54,10 @@ export function camelCase(): void {
 // ------------------------------------------------------------------------
 
 export function spaceByUpper(): void {
-    um.utilityManager({
-        utilType: um.TIXUtilityType.utInTransform,
-        pat: /([A-Z])/g, repl: (match, p1: string) => ' ' + p1
-    });
+  um.utilityManager({
+    utilType: um.TIXUtilityType.utInTransform,
+    pat: /([A-Z])/g, repl: (match, p1: string) => ' ' + p1
+  });
 }
 
 // ------------------------------------------------------------------------
@@ -69,10 +69,10 @@ export function spaceByUpper(): void {
 // ------------------------------------------------------------------------
 
 export function reverseAssignment(): void {
-    um.utilityManager({
-        utilType: um.TIXUtilityType.utInTransform,
-        pat: /\b(.+)(\s+)([=<>]=*|[!:]=+)(\s+)([^;]+)/, repl: '$5$2$3$4$1'
-    });
+  um.utilityManager({
+    utilType: um.TIXUtilityType.utInTransform,
+    pat: /\b(.+)(\s+)([=<>]=*|[!:]=+)(\s+)([^;]+)/, repl: '$5$2$3$4$1'
+  });
 }
 
 // ------------------------------------------------------------------------
@@ -84,10 +84,10 @@ export function reverseAssignment(): void {
 // ------------------------------------------------------------------------
 
 export function unixToWinSlash(): void {
-    um.utilityManager({
-        utilType: um.TIXUtilityType.utInTransform,
-        pat: /\//g, repl: '\\'
-    });
+  um.utilityManager({
+    utilType: um.TIXUtilityType.utInTransform,
+    pat: /\//g, repl: '\\'
+  });
 }
 
 // ------------------------------------------------------------------------
@@ -99,10 +99,10 @@ export function unixToWinSlash(): void {
 // ------------------------------------------------------------------------
 
 export function winToUnixSlash(): void {
-    um.utilityManager({
-        utilType: um.TIXUtilityType.utInTransform,
-        pat: /\\/g, repl: '/'
-    });
+  um.utilityManager({
+    utilType: um.TIXUtilityType.utInTransform,
+    pat: /\\/g, repl: '/'
+  });
 }
 
 // ------------------------------------------------------------------------
@@ -113,10 +113,10 @@ export function winToUnixSlash(): void {
 // ------------------------------------------------------------------------
 
 export function singleToDoubleSlash(): void {
-    um.utilityManager({
-        utilType: um.TIXUtilityType.utInTransform,
-        pat: /\\/g, repl: '\\\\'
-    });
+  um.utilityManager({
+    utilType: um.TIXUtilityType.utInTransform,
+    pat: /\\/g, repl: '\\\\'
+  });
 }
 
 // ------------------------------------------------------------------------
@@ -127,10 +127,10 @@ export function singleToDoubleSlash(): void {
 // ------------------------------------------------------------------------
 
 export function doubleToSingleSlash(): void {
-    um.utilityManager({
-        utilType: um.TIXUtilityType.utInTransform,
-        pat: /\\\\/g, repl: '\\'
-    });
+  um.utilityManager({
+    utilType: um.TIXUtilityType.utInTransform,
+    pat: /\\\\/g, repl: '\\'
+  });
 }
 
 // ------------------------------------------------------------------------
@@ -142,9 +142,9 @@ export function doubleToSingleSlash(): void {
 
 export function urlEncode(): void {
 
-    um.utilityManager({
-        utilType: um.TIXUtilityType.utTransform
-    }, (up): string => encodeURIComponent(up.intext));
+  um.utilityManager({
+    utilType: um.TIXUtilityType.utTransform
+  }, (up): string => encodeURIComponent(up.intext));
 }
 
 // ------------------------------------------------------------------------
@@ -156,9 +156,9 @@ export function urlEncode(): void {
 
 export function urlDecode(): void {
 
-    um.utilityManager({
-        utilType: um.TIXUtilityType.utTransform
-    }, (up): string => decodeURIComponent(up.intext));
+  um.utilityManager({
+    utilType: um.TIXUtilityType.utTransform
+  }, (up): string => decodeURIComponent(up.intext));
 }
 
 // ------------------------------------------------------------------------
@@ -171,8 +171,25 @@ export function urlDecode(): void {
 
 export function regnize(): void {
 
-    um.utilityManager({
-        utilType: um.TIXUtilityType.utTransform
-    }, (up): string => ep.regnize(up.intext, true));
+  um.utilityManager({
+    utilType: um.TIXUtilityType.utTransform
+  }, (up): string => ep.regnize(up.intext, true));
+}
+
+// ------------------------------------------------------------------------
+// $utility: headerToBookmark
+//
+// $desc: Converts markdown header text to Html Bookmark
+// $keywords: markdown html bookmark
+// $eg: Is this the header 你好?  ->  is-this-the-header-你好
+// ------------------------------------------------------------------------
+
+export function headerToBookmark(): void {
+
+  um.utilityManager({
+    utilType: um.TIXUtilityType.utTransform
+  }, (up): string => up.intext.trim().toLowerCase()
+    .replace(/[^\w\- \u0080-\uFFFFF]+/ug, ' ')
+    .replace(/\s+/g, '-').replace(/\-+$/, ''));
 }
 
