@@ -7,7 +7,6 @@
 // ------------------------------------------------------------------------
 
 import * as vscode from 'vscode';
-import { win32 } from 'path';
 import { window } from 'vscode';
 
 // ------------------------------------------------------------------------
@@ -68,26 +67,28 @@ function addInputLine(up: TIXUtilityParams, text: string, stage: TIXAddLineStage
 }
 
 // ------------------------------------------------------------------------
-//                               utilityManagerXXX
+//                               utilityManager
 // ------------------------------------------------------------------------
 
-export function utilityManagerWithUserInputs(utilDef: TIXUtilityDef,
+export async function utilityManagerWithUserInputs(utilDef: TIXUtilityDef,
   IXUserInputReqs: TIXUserInputReq[],
-  utilFunc: TIXUtilityFunc): boolean {
+  utilFunc: TIXUtilityFunc) {
 
   if (IXUserInputReqs.length) {
-    IXUserInputReqs[0]
-    let inpResProm = window.showInputBox(IXUserInputReqs[0]);
-    if (inpResProm !== undefined) {
-      inpResProm.then((userAnswer) => {
-        _utilityManager(utilDef, utilFunc, { userinputs: [userAnswer] });
-      });
-    }
+    let reqCount = IXUserInputReqs.length;
+    let userinputs = [];
 
-    return inpResProm !== undefined;
+    for (let i = 0; i < reqCount; i++) {
+      let userinput = await window.showInputBox(IXUserInputReqs[i]);
+      if (userinput === undefined) {
+        return;
+      }
+      userinputs.push(userinput);
+    }
+    _utilityManager(utilDef, utilFunc, { userinputs });
   }
-  return false;
 }
+
 
 export function utilityManager(utilDef: TIXUtilityDef, utilFunc?: TIXUtilityFunc): void {
   _utilityManager(utilDef, utilFunc, { userinputs: [] });

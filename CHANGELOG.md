@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.1.0] - 2018-09-21
 ### Changed
 - Update Changelog to conform with the standards.
+### Added
+- (DEV) Add support for multiple inputbox in `utilitymanager`.
+ > This addition allows for tools to request multiple inputs from the user
 
 
 ## [1.0.2] - 2018-08-22
