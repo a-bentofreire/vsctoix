@@ -193,3 +193,74 @@ export function headerToBookmark(): void {
     .replace(/\s+/g, '-').replace(/\-+$/, ''));
 }
 
+// ------------------------------------------------------------------------
+// $utility: mixer
+//
+// $desc: Mixes the lines of different sections.
+// $keywords: mix
+// $eg: // section||abc||cde||// end-section|| // section||123||345 -> abc||123||cde||345
+// ------------------------------------------------------------------------
+
+export function mixer(): void {
+
+  um.utilityManagerWithUserInputs({
+    utilType: um.TIXUtilityType.utTransform
+  },
+    [
+      { prompt: 'Start Section Line Pattern' },
+      { prompt: 'End Section Line Pattern' },
+      { prompt: 'Mixer' }
+    ],
+
+    (up): string => {
+      const startSection = up.userinputs[0];
+      const endSection = up.userinputs[1];
+      const mixer = up.userinputs[2];
+      if (!startSection || !endSection || !mixer) {
+        return up.intext;
+      }
+
+      const sections: string[][] = [];
+      const regStartSection = new RegExp(startSection);
+      const regEndSection = new RegExp(endSection);
+      let section: string[];
+
+      const lines = up.intext.split(/\n/);
+      const outLines: string[] = [];
+      let insertAtLine: number = undefined;
+
+      lines.forEach((line, lineNr) => {
+        if (!section) {
+          // scans for the section start
+          if (regStartSection.test(line)) {
+            section = [];
+            insertAtLine = insertAtLine || lineNr;
+          } else {
+            outLines.push(line);
+          }
+
+        } else {
+          // scans for the section end
+          if (regEndSection.test(line)) {
+            sections.push(section);
+            section = undefined;
+          } else {
+            section.push(line);
+          }
+        }
+      });
+
+      // needs at least 2 section to mix
+      if (sections.length < 2) {
+        return up.intext;
+      }
+
+      const insData = sections[0].map((_line, lineNr) => mixer
+        .replace(/\$(\d+)/g, (_all, secNr) => sections[parseInt(secNr)][lineNr])
+        .replace(/\\n/g, '\n')
+      );
+
+      outLines.splice(insertAtLine, 0, insData.join('\n'));
+      return outLines.join('\n');
+    });
+}

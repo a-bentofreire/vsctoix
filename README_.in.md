@@ -3,6 +3,8 @@
 Strap on the belt and become a Ninja Developer with these __UTILITYCOUNT__ utilities.  
 
 ![Demo](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/demo.gif)
+  
+![Mixer](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/mixer.gif)
 
 ## Utilities
 __UTILITY_LIST_TABLE__

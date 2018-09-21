@@ -1,8 +1,10 @@
 # VS Code Utility Belt
 
-Strap on the belt and become a Ninja Developer with these 24 utilities.  
+Strap on the belt and become a Ninja Developer with these 25 utilities.  
 
 ![Demo](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/demo.gif)
+  
+![Mixer](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/mixer.gif)
 
 ## Utilities
 
@@ -25,6 +27,20 @@ Strap on the belt and become a Ninja Developer with these 24 utilities.
  ```e.g. (\w+)[A-Z]a*b+text  ->  \(\\w\+\)\[A-Z\]a\*b\+text```
    * Header To Bookmark - **Converts markdown header text to Html Bookmark**  
  ```e.g. Is this the header 你好?  ->  is-this-the-header-你好```
+   * Mixer - **Mixes the lines of different sections.**  
+  
+e.g.  
+>// section  
+>abc  
+>cde  
+>// end-section  
+> // section  
+>123  
+>345 -> abc  
+>123  
+>cde  
+>345  
+
 
 * Line Utilities
    * Remove Duplicated Lines - **Removes consecutive duplicated lines**  
