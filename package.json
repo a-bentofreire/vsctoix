@@ -2,7 +2,7 @@
   "name": "vsctoix",
   "displayName": "vsctoix",
   "description": "VS Code Utility Belt. Text transformations, insertions and sorting",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "publisher": "a-bentofreire",
   "keywords": [
     "transform",
