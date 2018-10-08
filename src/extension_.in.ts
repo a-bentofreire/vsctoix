@@ -8,10 +8,9 @@
 // ------------------------------------------------------------------------
 
 import * as vscode from 'vscode';
-import * as um from './utilitymanager';
-import * as transformutilities from './transformutilities';
-import * as lineutilities from './lineutilities';
-import * as insertutilities from './insertutilities';
+import * as transformutilities from './common/transformutilities';
+import * as lineutilities from './common/lineutilities';
+import * as insertutilities from './common/insertutilities';
 
 // ------------------------------------------------------------------------
 //                               Startup Code
@@ -22,16 +21,16 @@ import * as insertutilities from './insertutilities';
 export function activate(context: vscode.ExtensionContext) {
 
     interface TUtilityDef {
-        f: () => void,
-        id: string
-    };
+        f: () => void;
+        id: string;
+    }
 
     const utilities: TUtilityDef[] = [
 /* __UTILITYDEFS__ */
     ];
 
     for (const action of utilities) {
-        let disposable = vscode.commands.registerCommand(action.id, action.f);
+        const disposable = vscode.commands.registerCommand(action.id, action.f);
         context.subscriptions.push(disposable);
     }
 }

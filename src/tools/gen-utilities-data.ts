@@ -95,7 +95,7 @@ function runGenerator(): void {
 
     const utilityCat = utilityTable[utilityFile] = [];
 
-    const temText = loadText(`${FOLDER}/${utilityFile}.ts`);
+    const temText = loadText(`${FOLDER}/common/${utilityFile}.ts`);
 
     temText.replace(/\$cattitle\s*:\s*([^\n]+)\s*/, (_match, catTitle) => {
       catTitles[utilityFile] = catTitle;

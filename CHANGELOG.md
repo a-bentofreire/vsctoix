@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [1.1.0]
 ### Changed
 - Update Changelog to conform with the standards.
+- (DEV) Move code shared with atomtoix to common folder.
+
 ### Added
 - (DEV) Add support for multiple inputbox in `utilitymanager`.
  > This addition allows for tools to request multiple inputs from the user

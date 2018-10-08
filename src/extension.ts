@@ -8,9 +8,9 @@
 // ------------------------------------------------------------------------
 
 import * as vscode from 'vscode';
-import * as transformutilities from './transformutilities';
-import * as lineutilities from './lineutilities';
-import * as insertutilities from './insertutilities';
+import * as transformutilities from './common/transformutilities';
+import * as lineutilities from './common/lineutilities';
+import * as insertutilities from './common/insertutilities';
 
 // ------------------------------------------------------------------------
 //                               Startup Code
