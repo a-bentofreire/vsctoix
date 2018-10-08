@@ -13,8 +13,11 @@
 // this function is credited to @broofa
 // https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
 export function uuidv4(): string {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+    // tslint:disable-next-line:no-bitwise
+    const r = Math.random() * 16 | 0;
+    // tslint:disable-next-line:no-bitwise
+    const v = c === 'x' ? r : (r & 0x3 | 0x8);
     return v.toString(16);
   });
 }
@@ -22,7 +25,7 @@ export function uuidv4(): string {
 // this function is credited to @Flygenring
 // https://stackoverflow.com/questions/10830357/javascript-toisostring-ignores-timezone-offset
 export function getLocalISOTimeDate() {
-  let tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+  const tzoffset = (new Date()).getTimezoneOffset() * 60000; // offset in milliseconds
   return (new Date(Date.now() - tzoffset)).toISOString().substr(0, 19).replace('T', ' ');
 }
 
@@ -36,9 +39,8 @@ export function ISOTimeDate(): string {
 }
 
 export function regnize(text: string, isFind: boolean): string {
-  const
-    REGNIZEFIND = /([\\.()\[\]*+\^$])/g,
-    REGNIZEREPL = '\\$1';
+  const REGNIZEFIND = /([\\.()\[\]*+\^$])/g;
+  const REGNIZEREPL = '\\$1';
   return text.replace(isFind ? REGNIZEFIND : /(\$\d)/g, REGNIZEREPL);
 }
 
@@ -111,7 +113,7 @@ export function processExpression(expression: string,
         case 'c':
           let value = selNr++;
           if (valueParam) {
-            let firstChar = valueParam[0];
+            const firstChar = valueParam[0];
 
             // handles hex numbers
             if (firstChar === 'x' || firstChar === 'X') {
@@ -120,8 +122,8 @@ export function processExpression(expression: string,
               // makes sure that the output has the same case as the input
               eres = firstChar === 'x' ? eres.toLowerCase() : eres.toUpperCase();
               // makes sure that the output has the same length or greater as the input
-              let outLen = valueParam.length - 1;
-              if (eres.length < outLen) eres = Array(outLen - eres.length + 1).join('0') + eres;
+              const outLen = valueParam.length - 1;
+              if (eres.length < outLen) { eres = Array(outLen - eres.length + 1).join('0') + eres; }
               return eres;
 
             } else {

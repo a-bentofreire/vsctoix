@@ -6,7 +6,6 @@
 // Licensed under the MIT License+uuid License. See License.txt for details
 // ------------------------------------------------------------------------
 
-import * as vscode from 'vscode';
 import * as um from './utilitymanager';
 import * as ep from './expressionprocessor';
 
@@ -26,7 +25,7 @@ import * as ep from './expressionprocessor';
 export function capitalize(): void {
   um.utilityManager({
     utilType: um.TIXUtilityType.utInTransform,
-    pat: /\b(_*\w)/g, repl: (match, p1: string) => p1.toUpperCase()
+    pat: /\b(_*\w)/g, repl: (_match, p1: string) => p1.toUpperCase(),
   });
 }
 
@@ -40,7 +39,7 @@ export function capitalize(): void {
 export function camelCase(): void {
   um.utilityManager({
     utilType: um.TIXUtilityType.utInTransform,
-    pat: /\b(_*\w)/g, repl: (match, p1: string) => p1.toLowerCase()
+    pat: /\b(_*\w)/g, repl: (_match, p1: string) => p1.toLowerCase(),
   });
 }
 
@@ -56,7 +55,7 @@ export function camelCase(): void {
 export function spaceByUpper(): void {
   um.utilityManager({
     utilType: um.TIXUtilityType.utInTransform,
-    pat: /([A-Z])/g, repl: (match, p1: string) => ' ' + p1
+    pat: /([A-Z])/g, repl: (_match, p1: string) => ' ' + p1,
   });
 }
 
@@ -71,7 +70,7 @@ export function spaceByUpper(): void {
 export function reverseAssignment(): void {
   um.utilityManager({
     utilType: um.TIXUtilityType.utInTransform,
-    pat: /\b(.+)(\s+)([=<>]=*|[!:]=+)(\s+)([^;]+)/, repl: '$5$2$3$4$1'
+    pat: /\b(.+)(\s+)([=<>]=*|[!:]=+)(\s+)([^;]+)/, repl: '$5$2$3$4$1',
   });
 }
 
@@ -86,7 +85,7 @@ export function reverseAssignment(): void {
 export function unixToWinSlash(): void {
   um.utilityManager({
     utilType: um.TIXUtilityType.utInTransform,
-    pat: /\//g, repl: '\\'
+    pat: /\//g, repl: '\\',
   });
 }
 
@@ -101,7 +100,7 @@ export function unixToWinSlash(): void {
 export function winToUnixSlash(): void {
   um.utilityManager({
     utilType: um.TIXUtilityType.utInTransform,
-    pat: /\\/g, repl: '/'
+    pat: /\\/g, repl: '/',
   });
 }
 
@@ -115,7 +114,7 @@ export function winToUnixSlash(): void {
 export function singleToDoubleSlash(): void {
   um.utilityManager({
     utilType: um.TIXUtilityType.utInTransform,
-    pat: /\\/g, repl: '\\\\'
+    pat: /\\/g, repl: '\\\\',
   });
 }
 
@@ -129,7 +128,7 @@ export function singleToDoubleSlash(): void {
 export function doubleToSingleSlash(): void {
   um.utilityManager({
     utilType: um.TIXUtilityType.utInTransform,
-    pat: /\\\\/g, repl: '\\'
+    pat: /\\\\/g, repl: '\\',
   });
 }
 
@@ -143,7 +142,7 @@ export function doubleToSingleSlash(): void {
 export function urlEncode(): void {
 
   um.utilityManager({
-    utilType: um.TIXUtilityType.utTransform
+    utilType: um.TIXUtilityType.utTransform,
   }, (up): string => encodeURIComponent(up.intext));
 }
 
@@ -157,7 +156,7 @@ export function urlEncode(): void {
 export function urlDecode(): void {
 
   um.utilityManager({
-    utilType: um.TIXUtilityType.utTransform
+    utilType: um.TIXUtilityType.utTransform,
   }, (up): string => decodeURIComponent(up.intext));
 }
 
@@ -172,7 +171,7 @@ export function urlDecode(): void {
 export function regnize(): void {
 
   um.utilityManager({
-    utilType: um.TIXUtilityType.utTransform
+    utilType: um.TIXUtilityType.utTransform,
   }, (up): string => ep.regnize(up.intext, true));
 }
 
@@ -187,7 +186,7 @@ export function regnize(): void {
 export function headerToBookmark(): void {
 
   um.utilityManager({
-    utilType: um.TIXUtilityType.utTransform
+    utilType: um.TIXUtilityType.utTransform,
   }, (up): string => up.intext.trim().toLowerCase()
     .replace(/[^\w\- \u0080-\uFFFFF]+/ug, ' ')
     .replace(/\s+/g, '-').replace(/\-+$/, ''));
@@ -204,19 +203,19 @@ export function headerToBookmark(): void {
 export function mixer(): void {
 
   um.utilityManagerWithUserInputs({
-    utilType: um.TIXUtilityType.utTransform
+    utilType: um.TIXUtilityType.utTransform,
   },
     [
       { prompt: 'Start Section Line Pattern' },
       { prompt: 'End Section Line Pattern' },
-      { prompt: 'Mixer' }
+      { prompt: 'Mixer' },
     ],
 
     (up): string => {
       const startSection = up.userinputs[0];
       const endSection = up.userinputs[1];
-      const mixer = up.userinputs[2];
-      if (!startSection || !endSection || !mixer) {
+      const mixerInput = up.userinputs[2];
+      if (!startSection || !endSection || !mixerInput) {
         return up.intext;
       }
 
@@ -227,7 +226,7 @@ export function mixer(): void {
 
       const lines = up.intext.split(/\n/);
       const outLines: string[] = [];
-      let insertAtLine: number = undefined;
+      let insertAtLine: number;
 
       lines.forEach((line, lineNr) => {
         if (!section) {
@@ -255,9 +254,9 @@ export function mixer(): void {
         return up.intext;
       }
 
-      const insData = sections[0].map((_line, lineNr) => mixer
+      const insData = sections[0].map((_line, lineNr) => mixerInput
         .replace(/\$(\d+)/g, (_all, secNr) => sections[parseInt(secNr)][lineNr])
-        .replace(/\\n/g, '\n')
+        .replace(/\\n/g, '\n'),
       );
 
       outLines.splice(insertAtLine, 0, insData.join('\n'));

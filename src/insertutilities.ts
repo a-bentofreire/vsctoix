@@ -6,7 +6,6 @@
 // Licensed under the MIT License+uuid License. See License.txt for details
 // ------------------------------------------------------------------------
 
-import * as vscode from 'vscode';
 import * as um from './utilitymanager';
 import * as ep from './expressionprocessor';
 
@@ -26,8 +25,8 @@ import * as ep from './expressionprocessor';
 
 export function insertISODate(): void {
   um.utilityManager({
-    utilType: um.TIXUtilityType.utInsertAtEndUtility
-  }, (up): string => ep.ISODate()
+    utilType: um.TIXUtilityType.utInsertAtEndUtility,
+  }, (_up): string => ep.ISODate(),
   );
 }
 
@@ -41,8 +40,8 @@ export function insertISODate(): void {
 
 export function insertISOTimeDate(): void {
   um.utilityManager({
-    utilType: um.TIXUtilityType.utInsertAtEndUtility
-  }, (up): string => ep.ISOTimeDate()
+    utilType: um.TIXUtilityType.utInsertAtEndUtility,
+  }, (_up): string => ep.ISOTimeDate(),
   );
 }
 
@@ -56,8 +55,8 @@ export function insertISOTimeDate(): void {
 
 export function insertUUID(): void {
   um.utilityManager({
-    utilType: um.TIXUtilityType.utInsertAtEndUtility
-  }, (up): string => ep.uuidv4()
+    utilType: um.TIXUtilityType.utInsertAtEndUtility,
+  }, (_up): string => ep.uuidv4(),
   );
 }
 
@@ -70,12 +69,12 @@ export function insertUUID(): void {
 
 export function insertTextAtEnd(): void {
   um.utilityManagerWithUserInputs({
-    utilType: um.TIXUtilityType.utInsertAtEndUtility
+    utilType: um.TIXUtilityType.utInsertAtEndUtility,
   },
     [{ prompt: 'Expression' }],
 
     (up): string => {
-      let userInput = ep.processExpression(up.userinputs[0], up.selNr, up.intext);
+      const userInput = ep.processExpression(up.userinputs[0], up.selNr, up.intext);
       return userInput;
     });
 }
@@ -89,12 +88,12 @@ export function insertTextAtEnd(): void {
 
 export function insertTextAtStart(): void {
   um.utilityManagerWithUserInputs({
-    utilType: um.TIXUtilityType.utInsertAtStartUtility
+    utilType: um.TIXUtilityType.utInsertAtStartUtility,
   },
     [{ prompt: 'Expression' }],
 
     (up): string => {
-      let userInput = ep.processExpression(up.userinputs[0], up.selNr, up.intext);
+      const userInput = ep.processExpression(up.userinputs[0], up.selNr, up.intext);
       return userInput;
     });
 }

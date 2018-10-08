@@ -23,7 +23,7 @@ export interface TIXUtilityParams {
   editor?: vscode.TextEditor;
   doc?: vscode.TextDocument;
   sel?: vscode.Selection;
-};
+}
 
 export type TIXUtilityFunc = (up: TIXUtilityParams) => void | string | string[];
 export enum TIXUtilityType {
@@ -38,20 +38,20 @@ export enum TIXUtilityType {
   /// inserts text at the start of the selection or at cursor point if no text is selected
   utInsertAtStartUtility,
   /// inserts text at the end of the selection or at cursor point if no text is selected
-  utInsertAtEndUtility
-};
+  utInsertAtEndUtility,
+}
 
 export interface TIXUtilityDef {
   utilType: TIXUtilityType;
   pat?: string | RegExp;
   repl?;
-};
+}
 
 export interface TIXUserInputReq {
   prompt?: string;
-};
+}
 
-enum TIXAddLineStage { firstLine, middleLine, lastLine };
+enum TIXAddLineStage { firstLine, middleLine, lastLine }
 
 // ------------------------------------------------------------------------
 //                               addInputLine
@@ -59,7 +59,7 @@ enum TIXAddLineStage { firstLine, middleLine, lastLine };
 
 function addInputLine(up: TIXUtilityParams, text: string, stage: TIXAddLineStage): void {
 
-  if (stage != TIXAddLineStage.firstLine) {
+  if (stage !== TIXAddLineStage.firstLine) {
     up.intext += '\n' + text;
   } else {
     up.intext = text;
@@ -75,11 +75,11 @@ export async function utilityManagerWithUserInputs(utilDef: TIXUtilityDef,
   utilFunc: TIXUtilityFunc) {
 
   if (IXUserInputReqs.length) {
-    let reqCount = IXUserInputReqs.length;
-    let userinputs = [];
+    const reqCount = IXUserInputReqs.length;
+    const userinputs = [];
 
     for (let i = 0; i < reqCount; i++) {
-      let userinput = await window.showInputBox(IXUserInputReqs[i]);
+      const userinput = await window.showInputBox(IXUserInputReqs[i]);
       if (userinput === undefined) {
         return;
       }
@@ -101,9 +101,9 @@ function _utilityManager(utilDef: TIXUtilityDef, utilFunc: TIXUtilityFunc, up: T
   up.doc = up.editor.document;
   up.selNr = 0;
 
-  let sels = up.editor.selections;
+  const sels = up.editor.selections;
   // WARN: assumes the VSC API will give one selection and is empty when no text is selected
-  let hasNoSels = (sels.length === 1) && (sels[0].isEmpty);
+  const hasNoSels = (sels.length === 1) && (sels[0].isEmpty);
   for (const sel of sels) {
     up.sel = sel;
     up.inlines = [];
@@ -116,16 +116,17 @@ function _utilityManager(utilDef: TIXUtilityDef, utilFunc: TIXUtilityFunc, up: T
         if (hasNoSels) {
           up.intext = '';
           insertText = utilFunc(up) as string;
-          if (insertText)
+          if (insertText) {
             up.changes.push({
               location: new vscode.Position(up.sel.start.line, up.sel.start.character),
-              value: insertText
+              value: insertText,
             });
+          }
 
         } else {
           // this code is only when there is a non-empty selection
-          let lineInsMin = up.sel.start.line;
-          let lineInsMax = up.sel.end.line;
+          const lineInsMin = up.sel.start.line;
+          const lineInsMax = up.sel.end.line;
           let xMin: number;
           let xMax: number;
 
@@ -133,18 +134,19 @@ function _utilityManager(utilDef: TIXUtilityDef, utilFunc: TIXUtilityFunc, up: T
 
             xMin = (lineI === lineInsMin) ? up.sel.start.character : 0;
             xMax = (lineI === lineInsMax) ? up.sel.end.character : up.doc.lineAt(lineI).text.length;
-            let minPos = new vscode.Position(lineI, xMin);
-            let maxPos = new vscode.Position(lineI, xMax);
+            const minPos = new vscode.Position(lineI, xMin);
+            const maxPos = new vscode.Position(lineI, xMax);
 
             up.intext = up.doc.getText(new vscode.Range(minPos, maxPos)) || '';
 
-            let insertText = utilFunc(up) as string;
+            const insertTextStr = utilFunc(up) as string;
 
-            if (insertText)
+            if (insertTextStr) {
               up.changes.push({
                 location: utilDef.utilType === TIXUtilityType.utInsertAtStartUtility ?
-                  minPos : maxPos, value: insertText
+                  minPos : maxPos, value: insertTextStr,
               });
+            }
 
             up.selNr++;
           }
@@ -156,15 +158,14 @@ function _utilityManager(utilDef: TIXUtilityDef, utilFunc: TIXUtilityFunc, up: T
         break;
 
 
-
       case TIXUtilityType.utLinesUtility:
       case TIXUtilityType.utLineUtility:
 
-        let lineMin = hasNoSels ? 0 : sel.start.line;
-        let lineMax = hasNoSels ? up.doc.lineCount - 1 : sel.end.line;
+        const lineMin = hasNoSels ? 0 : sel.start.line;
+        const lineMax = hasNoSels ? up.doc.lineCount - 1 : sel.end.line;
 
         for (let lineI = lineMin; lineI <= lineMax; lineI++) {
-          let line = up.doc.lineAt(lineI).text;
+          const line = up.doc.lineAt(lineI).text;
 
           switch (utilDef.utilType) {
             case TIXUtilityType.utLinesUtility:
@@ -173,20 +174,20 @@ function _utilityManager(utilDef: TIXUtilityDef, utilFunc: TIXUtilityFunc, up: T
 
             case TIXUtilityType.utLineUtility:
               up.intext = line;
-              let outLine = utilFunc(up) as string;
+              const outLine = utilFunc(up) as string;
               if (line !== outLine) {
                 up.changes.push({
                   location: new vscode.Range(new vscode.Position(lineI, 0),
-                    new vscode.Position(lineI, line.length)), value: outLine
+                    new vscode.Position(lineI, line.length)), value: outLine,
                 });
               }
               break;
           }
         }
         // run after all the selected lines
-        if (utilDef.utilType == TIXUtilityType.utLinesUtility) {
-          let outLines = utilFunc(up) as string[];
-          let outRg = new vscode.Range(new vscode.Position(lineMin, 0),
+        if (utilDef.utilType === TIXUtilityType.utLinesUtility) {
+          const outLines = utilFunc(up) as string[];
+          const outRg = new vscode.Range(new vscode.Position(lineMin, 0),
             new vscode.Position(lineMax, up.doc.lineAt(lineMax).text.length));
           up.changes.push({ location: outRg, value: outLines.join('\n') });
         }
@@ -240,8 +241,7 @@ function _utilityManager(utilDef: TIXUtilityDef, utilFunc: TIXUtilityFunc, up: T
         let outSelText: string;
         if (utilDef.utilType === TIXUtilityType.utInTransform) {
           outSelText = up.intext.replace(utilDef.pat, utilDef.repl);
-        }
-        else { outSelText = utilFunc(up) as string; }
+        } else { outSelText = utilFunc(up) as string; }
 
         if (up.intext !== outSelText) {
           up.changes.push({ location: outSel, value: outSelText });

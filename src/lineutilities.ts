@@ -6,7 +6,6 @@
 // Licensed under the MIT License+uuid License. See License.txt for details
 // ------------------------------------------------------------------------
 
-import * as vscode from 'vscode';
 import * as um from './utilitymanager';
 import * as ep from './expressionprocessor';
 
@@ -26,9 +25,9 @@ import * as ep from './expressionprocessor';
 
 export function removeDuplicatedLines(): void {
   um.utilityManager({
-    utilType: um.TIXUtilityType.utLinesUtility
+    utilType: um.TIXUtilityType.utLinesUtility,
   }, (up): string[] => {
-    let arr = up.inlines;
+    const arr = up.inlines;
     for (let i = arr.length - 1; i >= 0; i--) {
       if (arr[i + 1] === arr[i]) {
         arr.splice(i + 1, 1);
@@ -47,9 +46,9 @@ export function removeDuplicatedLines(): void {
 
 export function removeEmptyLines(): void {
   um.utilityManager({
-    utilType: um.TIXUtilityType.utLinesUtility
+    utilType: um.TIXUtilityType.utLinesUtility,
   }, (up): string[] => {
-    let arr = up.inlines;
+    const arr = up.inlines;
     for (let i = arr.length - 1; i >= 0; i--) {
       if (!arr[i].trim()) {
         arr.splice(i, 1);
@@ -86,7 +85,7 @@ export function joinLines(): void {
         userInput = ep.processExpression(userInput, up.selNr, up.intext);
       }
 
-      let joinedLines = up.inlines.join(userInput);
+      const joinedLines = up.inlines.join(userInput);
       return [joinedLines];
     });
 }
@@ -105,9 +104,9 @@ export function splitLines(): void {
   },
     [{ prompt: 'Expression' }],
     (up): string[] => {
-      let userInput = ep.processExpression(up.userinputs[0], up.selNr, up.intext);
+      const userInput = ep.processExpression(up.userinputs[0], up.selNr, up.intext);
       let resLines = [];
-      let index = 0;
+      const index = 0;
       up.inlines.forEach((line) => {
         resLines = resLines.concat(line.split(userInput));
       });
@@ -128,9 +127,9 @@ export function sortNumericallyAscending(): void {
     utilType: um.TIXUtilityType.utLinesUtility,
   },
     (up): string[] => {
-      let keylines: any[][] = up.inlines.map((line => {
-        let match = line.match(/(\d+)/);
-        let key = match ? parseInt(match[0]) : 0;
+      const keylines: any[][] = up.inlines.map((line => {
+        const match = line.match(/(\d+)/);
+        const key = match ? parseInt(match[0]) : 0;
         return [key, line];
       }));
       keylines.sort((a, b) => a[0] - b[0]);
@@ -165,6 +164,6 @@ export function outdentOneSpace(): void {
   um.utilityManager({
     utilType: um.TIXUtilityType.utLineUtility,
   },
-    (up): string => up.intext !== '' && up.intext[0] === ' ' ? 
-    up.intext.substr(1): up.intext);
+    (up): string => up.intext !== '' && up.intext[0] === ' ' ?
+    up.intext.substr(1) : up.intext);
 }

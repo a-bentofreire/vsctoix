@@ -11,7 +11,7 @@
   and transforms the output file templates by inserting the list of utilities
 */
 
-var fs = require('fs');
+let fs = require('fs');
 
 const INPUT_UTILITY_FILES = ['transformutilities', 'lineutilities', 'insertutilities'];
 const FOLDER = '../../src';
@@ -47,8 +47,8 @@ interface TUtility {
   title: string;
   funcstr: string;
   eg: string;
-  desc: string
-};
+  desc: string;
+}
 
 interface TMacro {
   key: string;
@@ -57,13 +57,13 @@ interface TMacro {
 
 function buildMacros(utilities: TUtility[]): TMacro[] {
 
-  let macros: TMacro[] = [
-    { key: '__AUTO_GEN_WARN__', value: `${AUTO_GEN_WARN}` }
+  const macros: TMacro[] = [
+    { key: '__AUTO_GEN_WARN__', value: `${AUTO_GEN_WARN}` },
   ];
 
-  let actionDefs: string[] = [];
-  let commands: string[] = [];
-  let ACTIVATION_EVENTS: string[] = [];
+  const actionDefs: string[] = [];
+  const commands: string[] = [];
+  const ACTIVATION_EVENTS: string[] = [];
 
   utilities.forEach(utility => {
     actionDefs.push(`        { f: ${utility.funcstr}, id: 'editor.${utility.name}' }`);
@@ -86,32 +86,32 @@ function runGenerator(): void {
 
   console.log('  >> Started <<');
 
-  let utilities: TUtility[] = [];
-  let keywords: string[] = [];
-  let utilityTable: { [cat: string]: TUtility[] } = {};
-  let catTitles: { [utilityFile: string]: string } = {};
+  const utilities: TUtility[] = [];
+  const keywords: string[] = [];
+  const utilityTable: { [cat: string]: TUtility[] } = {};
+  const catTitles: { [utilityFile: string]: string } = {};
 
   INPUT_UTILITY_FILES.forEach(utilityFile => {
 
-    let utilityCat = utilityTable[utilityFile] = [];
+    const utilityCat = utilityTable[utilityFile] = [];
 
-    let temText = loadText(`${FOLDER}/${utilityFile}.ts`);
+    const temText = loadText(`${FOLDER}/${utilityFile}.ts`);
 
-    temText.replace(/\$cattitle\s*:\s*([^\n]+)\s*/, (match, catTitle) => {
+    temText.replace(/\$cattitle\s*:\s*([^\n]+)\s*/, (_match, catTitle) => {
       catTitles[utilityFile] = catTitle;
       return '';
     });
 
-    temText.replace(/\/\/\s*\$utility:\s*(\w+)((?:.|\n|\r)*?)\s*\/\/\s+-{15,}/g, (match, name, paramData) => {
+    temText.replace(/\/\/\s*\$utility:\s*(\w+)((?:.|\n|\r)*?)\s*\/\/\s+-{15,}/g, (_match, name, paramData) => {
 
-      let utility: TUtility = {
-        name: name,
+      const utility: TUtility = {
+        name,
         title: getTitleFromName(name),
         funcstr: `${utilityFile}.${name}`,
         eg: '',
-        desc: ''
-      }
-      paramData.replace(/\/\/\s*\$(\w+)\s*:\s*([^\n]*)\s*/g, (match, key, value) => {
+        desc: '',
+      };
+      paramData.replace(/\/\/\s*\$(\w+)\s*:\s*([^\n]*)\s*/g, (_match1, key, value) => {
         console.log(`    ${key}:${value}`);
         switch (key) {
 
@@ -122,7 +122,7 @@ function runGenerator(): void {
           case 'keywords':
             value.split(',').forEach(valueKeyword => {
               valueKeyword = '"' + valueKeyword.trim() + '"';
-              if (keywords.indexOf(valueKeyword) === -1) keywords.push(valueKeyword);
+              if (keywords.indexOf(valueKeyword) === -1) { keywords.push(valueKeyword); }
             });
 
           case 'eg':
@@ -142,7 +142,7 @@ function runGenerator(): void {
     });
   });
 
-  let macros = buildMacros(utilities);
+  const macros = buildMacros(utilities);
 
   macros.push({ key: '"__KEYWORDS__"', value: keywords.join(',\n') });
   macros.push({ key: '__UTILITYCOUNT__', value: utilities.length.toString() });
@@ -152,29 +152,28 @@ function runGenerator(): void {
         return `\n* ${catTitles[utilityCat]}\n` +
           utilityTable[utilityCat].map(utility => {
             let eg = utility.eg;
-            if (eg === '__NONE__') eg = '';
+            if (eg === '__NONE__') { eg = ''; }
             if (eg) {
-              if (eg.indexOf('||') === -1) eg = ' ```e.g. ' + eg + '```';
-              else {
+              if (eg.indexOf('||') === -1) { eg = ' ```e.g. ' + eg + '```'; } else {
                 eg = '  \ne.g.  \n>' + eg.replace(/\|\|/g, '  \n>') + '  \n';
               }
             }
             let title = utility.title;
-            if (utility.desc) title = `${title} - **${utility.desc}**  \n`;
-            return `   * ${title}${eg}`
-          }
+            if (utility.desc) { title = `${title} - **${utility.desc}**  \n`; }
+            return `   * ${title}${eg}`;
+          },
           ).join('\n');
-      }).join('\n')
+      }).join('\n'),
   });
 
   OUTPUT_FILES.forEach(outputName => {
-    let templateFile = outputName.replace(/(\.\w+)$/, '_.in$1');
+    const templateFile = outputName.replace(/(\.\w+)$/, '_.in$1');
     let temText = loadText(`${FOLDER}/${templateFile}`);
 
-    macros.forEach(macro => { temText = temText.replace(macro.key, macro.value) });
+    macros.forEach(macro => { temText = temText.replace(macro.key, macro.value); });
 
     saveText(`${FOLDER}/${outputName}`, temText);
-  })
+  });
   console.log('  >> Done <<');
 }
 

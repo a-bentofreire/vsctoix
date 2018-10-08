@@ -8,7 +8,6 @@
 // ------------------------------------------------------------------------
 
 import * as vscode from 'vscode';
-import * as um from './utilitymanager';
 import * as transformutilities from './transformutilities';
 import * as lineutilities from './lineutilities';
 import * as insertutilities from './insertutilities';
@@ -22,9 +21,9 @@ import * as insertutilities from './insertutilities';
 export function activate(context: vscode.ExtensionContext) {
 
     interface TUtilityDef {
-        f: () => void,
-        id: string
-    };
+        f: () => void;
+        id: string;
+    }
 
     const utilities: TUtilityDef[] = [
         { f: transformutilities.capitalize, id: 'editor.capitalize' },
@@ -51,11 +50,11 @@ export function activate(context: vscode.ExtensionContext) {
         { f: insertutilities.insertISOTimeDate, id: 'editor.insertISOTimeDate' },
         { f: insertutilities.insertUUID, id: 'editor.insertUUID' },
         { f: insertutilities.insertTextAtEnd, id: 'editor.insertTextAtEnd' },
-        { f: insertutilities.insertTextAtStart, id: 'editor.insertTextAtStart' }
+        { f: insertutilities.insertTextAtStart, id: 'editor.insertTextAtStart' },
     ];
 
     for (const action of utilities) {
-        let disposable = vscode.commands.registerCommand(action.id, action.f);
+        const disposable = vscode.commands.registerCommand(action.id, action.f);
         context.subscriptions.push(disposable);
     }
 }
