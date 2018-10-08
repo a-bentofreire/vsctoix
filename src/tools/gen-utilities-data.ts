@@ -15,7 +15,7 @@ let fs = require('fs');
 
 const INPUT_UTILITY_FILES = ['transformutilities', 'lineutilities', 'insertutilities'];
 const FOLDER = '../../src';
-const OUTPUT_FILES = ['extension.ts', '../package.json', '../README.md'];
+const OUTPUT_FILES = ['common/utility-list.ts', '../package.json', '../README.md'];
 const AUTO_GEN_WARN = 'This file is generated automatically by npm run gen-utilities-data';
 
 // ------------------------------------------------------------------------
@@ -66,7 +66,7 @@ function buildMacros(utilities: TUtility[]): TMacro[] {
   const ACTIVATION_EVENTS: string[] = [];
 
   utilities.forEach(utility => {
-    actionDefs.push(`        { f: ${utility.funcstr}, id: 'editor.${utility.name}' }`);
+    actionDefs.push(`  { f: ${utility.funcstr}, id: 'editor.${utility.name}' }`);
     commands.push(`{ "command": "editor.${utility.name}", "title": "IX: ${utility.title}"}`);
     ACTIVATION_EVENTS.push(`"onCommand:editor.${utility.name}"`);
   });

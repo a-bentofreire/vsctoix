@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Changed
 - Update Changelog to conform with the standards.
 - (DEV) Move code shared with atomtoix to common folder.
+- (DEV) Move the list of the utilities to `common/utility-list`.
+> This change improves compatibility with atomtoix code.  
 
 ### Added
 - (DEV) Add support for multiple inputbox in `utilitymanager`.
