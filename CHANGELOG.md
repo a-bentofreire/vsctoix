@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
  > This addition allows for tools to request multiple inputs from the user
 - Add utility: `mixer`.
 - Add utility: `dashCase`.
+- (DEV) Add support for read config from json file on `gen-utilities-data`.
 
 ### Fixed
 - (DEV) Fix lint issues.

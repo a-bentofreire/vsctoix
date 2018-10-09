@@ -12,10 +12,8 @@
 */
 
 let fs = require('fs');
+let cfg;
 
-const INPUT_UTILITY_FILES = ['transformutilities', 'lineutilities', 'insertutilities'];
-const FOLDER = '../../src';
-const OUTPUT_FILES = ['common/utility-list.ts', '../package.json', '../README.md'];
 const AUTO_GEN_WARN = 'This file is generated automatically by npm run gen-utilities-data';
 
 // ------------------------------------------------------------------------
@@ -55,6 +53,13 @@ interface TMacro {
   value: string;
 }
 
+function processMacro(utility: TUtility, macroText: string): string {
+  return macroText
+    .replace(/\$\{funcstr\}/g, utility.funcstr)
+    .replace(/\$\{name\}/g, utility.name)
+    .replace(/\$\{title\}/g, utility.title);
+}
+
 function buildMacros(utilities: TUtility[]): TMacro[] {
 
   const macros: TMacro[] = [
@@ -63,17 +68,17 @@ function buildMacros(utilities: TUtility[]): TMacro[] {
 
   const actionDefs: string[] = [];
   const commands: string[] = [];
-  const ACTIVATION_EVENTS: string[] = [];
+  const activationEvents: string[] = [];
 
   utilities.forEach(utility => {
-    actionDefs.push(`  { f: ${utility.funcstr}, id: 'editor.${utility.name}' }`);
-    commands.push(`{ "command": "editor.${utility.name}", "title": "IX: ${utility.title}"}`);
-    ACTIVATION_EVENTS.push(`"onCommand:editor.${utility.name}"`);
+    actionDefs.push(processMacro(utility, cfg['action']));
+    commands.push(processMacro(utility, cfg['command']));
+    activationEvents.push(processMacro(utility, cfg['event']));
   });
 
   macros.push({ key: '/* __UTILITYDEFS__ */', value: actionDefs.join(',\n') });
   macros.push({ key: '"__COMMANDS__"', value: commands.join(',\n') });
-  macros.push({ key: '"__ACTIVATION_EVENTS__"', value: ACTIVATION_EVENTS.join(',\n') });
+  macros.push({ key: '"__ACTIVATION_EVENTS__"', value: activationEvents.join(',\n') });
 
   return macros;
 }
@@ -85,17 +90,18 @@ function buildMacros(utilities: TUtility[]): TMacro[] {
 function runGenerator(): void {
 
   console.log('  >> Started <<');
+  cfg = JSON.parse(loadText('./config.json'));
 
   const utilities: TUtility[] = [];
   const keywords: string[] = [];
   const utilityTable: { [cat: string]: TUtility[] } = {};
   const catTitles: { [utilityFile: string]: string } = {};
 
-  INPUT_UTILITY_FILES.forEach(utilityFile => {
+  cfg['inputFiles'].forEach(utilityFile => {
 
     const utilityCat = utilityTable[utilityFile] = [];
 
-    const temText = loadText(`${FOLDER}/common/${utilityFile}.ts`);
+    const temText = loadText(`${cfg['rootFolder']}/common/${utilityFile}.ts`);
 
     temText.replace(/\$cattitle\s*:\s*([^\n]+)\s*/, (_match, catTitle) => {
       catTitles[utilityFile] = catTitle;
@@ -179,13 +185,13 @@ function runGenerator(): void {
       }).join('\n'),
   });
 
-  OUTPUT_FILES.forEach(outputName => {
+  cfg['outputFiles'].forEach(outputName => {
     const templateFile = outputName.replace(/(\.\w+)$/, '_.in$1');
-    let temText = loadText(`${FOLDER}/${templateFile}`);
+    let temText = loadText(`${cfg['rootFolder']}/${templateFile}`);
 
     macros.forEach(macro => { temText = temText.replace(macro.key, macro.value); });
 
-    saveText(`${FOLDER}/${outputName}`, temText);
+    saveText(`${cfg['rootFolder']}/${outputName}`, temText);
   });
   console.log('  >> Done <<');
 }

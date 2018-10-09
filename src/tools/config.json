@@ -1,0 +1,9 @@
+{
+  "inputFiles": ["transformutilities", "lineutilities", "insertutilities"],
+  "outputFiles": ["common/utility-list.ts", "../package.json", "../README.md"],
+  "rootFolder": "../../src",
+
+  "action": "  { f: ${funcstr}, id: 'editor.${name}' }",
+  "command": "{ \"command\": \"editor.${name}\", \"title\": \"IX: ${title}\"}",
+  "event": "\"onCommand:editor.${name}\""
+}
