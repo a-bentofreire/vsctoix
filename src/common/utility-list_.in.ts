@@ -6,9 +6,9 @@
 // Licensed under the MIT License+uuid License. See License.txt for details
 // ------------------------------------------------------------------------
 
-import * as transformutilities from './transformutilities';
-import * as lineutilities from './lineutilities';
-import * as insertutilities from './insertutilities';
+import { transformutilities } from './transformutilities';
+import { lineutilities } from './lineutilities';
+import { insertutilities } from './insertutilities';
 
 export interface TUtilityDef {
   f: () => void;
@@ -16,5 +16,5 @@ export interface TUtilityDef {
 }
 
 export const utilityList: TUtilityDef[] = [
-/* __UTILITYDEFS__ */
+  /* __UTILITYDEFS__ */
 ];

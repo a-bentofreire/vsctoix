@@ -1,6 +1,7 @@
 # VS Code Utility Belt
 
 Strap on the belt and become a Ninja Developer with these __UTILITYCOUNT__ utilities.  
+This extension is also available for Atom Editor ([atomtoix]())
 
 ![Demo](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/demo.gif)
   

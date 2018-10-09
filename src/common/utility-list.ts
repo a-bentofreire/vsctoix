@@ -6,9 +6,9 @@
 // Licensed under the MIT License+uuid License. See License.txt for details
 // ------------------------------------------------------------------------
 
-import * as transformutilities from './transformutilities';
-import * as lineutilities from './lineutilities';
-import * as insertutilities from './insertutilities';
+import { transformutilities } from './transformutilities';
+import { lineutilities } from './lineutilities';
+import { insertutilities } from './insertutilities';
 
 export interface TUtilityDef {
   f: () => void;
@@ -16,16 +16,17 @@ export interface TUtilityDef {
 }
 
 export const utilityList: TUtilityDef[] = [
-  { f: transformutilities.capitalize, id: 'editor.capitalize' },
+    { f: transformutilities.capitalize, id: 'editor.capitalize' },
   { f: transformutilities.camelCase, id: 'editor.camelCase' },
+  { f: transformutilities.dashCase, id: 'editor.dashCase' },
   { f: transformutilities.spaceByUpper, id: 'editor.spaceByUpper' },
+  { f: transformutilities.urlEncode, id: 'editor.urlEncode' },
+  { f: transformutilities.urlDecode, id: 'editor.urlDecode' },
   { f: transformutilities.reverseAssignment, id: 'editor.reverseAssignment' },
   { f: transformutilities.unixToWinSlash, id: 'editor.unixToWinSlash' },
   { f: transformutilities.winToUnixSlash, id: 'editor.winToUnixSlash' },
   { f: transformutilities.singleToDoubleSlash, id: 'editor.singleToDoubleSlash' },
   { f: transformutilities.doubleToSingleSlash, id: 'editor.doubleToSingleSlash' },
-  { f: transformutilities.urlEncode, id: 'editor.urlEncode' },
-  { f: transformutilities.urlDecode, id: 'editor.urlDecode' },
   { f: transformutilities.regnize, id: 'editor.regnize' },
   { f: transformutilities.headerToBookmark, id: 'editor.headerToBookmark' },
   { f: transformutilities.mixer, id: 'editor.mixer' },

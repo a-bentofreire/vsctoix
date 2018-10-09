@@ -1,6 +1,7 @@
 # VS Code Utility Belt
 
-Strap on the belt and become a Ninja Developer with these 25 utilities.  
+Strap on the belt and become a Ninja Developer with these 26 utilities.  
+This extension is also available for Atom Editor ([atomtoix]())
 
 ![Demo](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/demo.gif)
   
@@ -11,8 +12,11 @@ Strap on the belt and become a Ninja Developer with these 25 utilities.
 * Transform Text Utilities
    * Capitalize ```e.g. classNameFunc  ->  ClassNameFunc```
    * Camel Case ```e.g. ClassNameFunc  ->  classNameFunc```
+   * Dash Case ```e.g. ClassNameFunc  ->  class-name-func```
    * Add Space before Uppercase - **Useful to transform functions names into documentation**  
  ```e.g. doActionBefore  ->  do Action Before```
+   * Url Encode ```e.g. https://github.com  ->  https%3A%2F%2Fgithub.com```
+   * Url Decode ```e.g. https%3A%2F%2Fgithub.com  ->  https://github.com```
    * Reverse Assignment - **Reverses the terms of assignments or equal/different comparisons**  
  ```e.g. x == y[x] + 5  ->  y[x] + 5 == x```
    * Unix To Win Slash - **Converts slashes to backslashes**  
@@ -21,8 +25,6 @@ Strap on the belt and become a Ninja Developer with these 25 utilities.
  ```e.g. chocolate\candy  ->  chocolate/candy```
    * Single To Double Slash ```e.g. find\nagain  ->  find\\\nagain```
    * Double To Single Slash ```e.g. find\\\nagain -> find\nagain```
-   * Url Encode ```e.g. https://github.com  ->  https%3A%2F%2Fgithub.com```
-   * Url Decode ```e.g. https%3A%2F%2Fgithub.com  ->  https://github.com```
    * Regnize - **Adds slash to regular expression metachars**  
  ```e.g. (\w+)[A-Z]a*b+text  ->  \(\\w\+\)\[A-Z\]a\*b\+text```
    * Header To Bookmark - **Converts markdown header text to Html Bookmark**  
