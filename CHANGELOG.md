@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - (DEV) Move code shared with atomtoix to common folder.
 - (DEV) Move the list of the utilities to `common/utility-list`.
 > This change improves compatibility with atomtoix code.  
+- Change the utility list output format to tabular in `README.md`.
 
 ### Added
 - (DEV) Add support for multiple inputbox in `utilitymanager`.

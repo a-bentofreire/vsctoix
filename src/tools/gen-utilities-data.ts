@@ -149,18 +149,31 @@ function runGenerator(): void {
   macros.push({
     key: '__UTILITY_LIST_TABLE__', value:
       Object.keys(utilityTable).map(utilityCat => {
-        return `\n* ${catTitles[utilityCat]}\n` +
+        return /* `\n* ${catTitles[utilityCat]}\n` */ '' +
           utilityTable[utilityCat].map(utility => {
             let eg = utility.eg;
             if (eg === '__NONE__') { eg = ''; }
+
             if (eg) {
-              if (eg.indexOf('||') === -1) { eg = ' ```e.g. ' + eg + '```'; } else {
-                eg = '  \ne.g.  \n>' + eg.replace(/\|\|/g, '  \n>') + '  \n';
+              if (eg.indexOf('||') === -1) {
+                if (eg.indexOf('->') !== -1) {
+                  // transform example
+                  eg = `**before**:\`${eg.replace(/\s*->\s*/, '`<br>**after**:`')}\``;
+                } else {
+                  // insert example
+                  eg = `\`${eg}\``;
+                }
+              } else {
+                // multiple line example
+                eg = ('**before**:<br>`' + eg.replace(/\|\|/g, '`<br>`')
+                  .replace(/\s*->\s*/, '`<br>**after**:<br>`') + '`')
+                  .replace(/``/g, '');
               }
             }
+
             let title = utility.title;
-            if (utility.desc) { title = `${title} - **${utility.desc}**  \n`; }
-            return `   * ${title}${eg}`;
+            if (utility.desc) { title += `<br>**${utility.desc}**`; }
+            return `|${title}|${eg}|`;
           },
           ).join('\n');
       }).join('\n'),
