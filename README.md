@@ -1,7 +1,10 @@
 # VS Code Utility Belt
 
 Strap on the belt and become a Ninja Developer with these 26 utilities.  
-This extension is also available for Atom Editor ([atomtoix]())
+This extension is also available for 
+Brackets([bracketsix](https://github.com/a-bentofreire/bracketstoix)) 
+and Atom([atomtoix](https://atom.io/packages/atomtoix)).  
+
 
 ![Demo](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/demo.gif)
   
@@ -23,7 +26,7 @@ This extension is also available for Atom Editor ([atomtoix]())
 |Double To Single Slash|**before**:`find\\\nagain`<br>**after**:`find\nagain`|
 |Regnize<br>**Adds slash to regular expression metachars**|**before**:`(\w+)[A-Z]a*b+text`<br>**after**:`\(\\w\+\)\[A-Z\]a\*b\+text`|
 |Header To Bookmark<br>**Converts markdown header text to Html Bookmark**|**before**:`Is this the header 你好?`<br>**after**:`is-this-the-header-你好`|
-|Mixer<br>**Mixes the lines of different sections.**|**before**:<br>`// section`<br>`abc`<br>`cde`<br>`// end-section`<br>` // section`<br>`123`<br>`345`<br>**after**:<br>`abc`<br>`123`<br>`cde`<br>`345`|
+|Mixer<br>**Mixes lines of different sections.**|**before**:<br>`// section`<br>`abc`<br>`cde`<br>`// end-section`<br>` // section`<br>`123`<br>`345`<br>**after**:<br>`abc`<br>`123`<br>`cde`<br>`345`|
 |Remove Duplicated Lines<br>**Removes consecutive duplicated lines**|**before**:<br>`first`<br>`second`<br>`second`<br><br>**after**:<br><br>`first`<br>`second`|
 |Remove Empty Lines|**before**:<br>`first`<br><br>`second`<br><br>**after**:<br><br>`first`<br>`second`|
 |Join Lines<br>**Joins lines adding the computed expression at the end of every line**|**before**:<br>`red`<br>`green`<br><br>**after**:<br>`expr:(x\c{X0A}),`<br>`red(x0A),green(x0B)`|

@@ -1,7 +1,7 @@
 {
   "name": "vsctoix",
   "displayName": "vsctoix",
-  "description": "VS Code Utility Belt. Text transformations, insertions and sorting",
+  "description": "urlencode,change slash,camel case,del duplicates, and much more...",
   "version": "1.1.0",
   "publisher": "a-bentofreire",
   "keywords": [
@@ -15,7 +15,7 @@
   "readme": "README.md",
   "author": {
     "name": "Alexandre Bento Freire",
-    "email": "dev@a-bentofreire.com",
+    "email": "devpieces@a-bentofreire.com",
     "url": "https://github.com/a-bentofreire"
   },
   "license": "SEE LICENSE IN LICENSE.txt",
@@ -23,7 +23,7 @@
     "vscode": "^1.18.0"
   },
 
-  "homepage": "https://github.com/a-bentofreire/vsctoix",
+  "homepage": "https://devpieces.a-bentofreire.com/products/vsctoix/",
   "bugs": "https://github.com/a-bentofreire/vsctoix/issues",
   "repository": {
     "type": "git",
@@ -50,7 +50,7 @@
     "watch": "tsc -watch -p ./",
     "publish": "vsce publish",
     "test": "npm run compile && node ./node_modules/vscode/bin/test",
-    "gen-utilities-data": "cd out/tools && node gen-utilities-data.js",
+    "gen-utilities-data": "cd src/tools && node ../../out/tools/gen-utilities-data.js",
     "postinstall": "node ./node_modules/vscode/bin/install"
 
   },
