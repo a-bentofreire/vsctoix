@@ -11,6 +11,7 @@ and Atom([atomtoix](https://atom.io/packages/atomtoix)).
 ![Mixer](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/mixer.gif)
 
 ## Utilities
+
 | Utility  | Example |
 | ------------- | ------------- |
 |Capitalize|**before**:`classNameFunc`<br>**after**:`ClassNameFunc`|
