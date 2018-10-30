@@ -265,7 +265,7 @@ export namespace transformutilities {
   //
   // $desc: Mixes lines of different sections.
   // $keywords: mix
-  // $eg: // section||abc||cde||// end-section|| // section||123||345 -> abc||123||cde||345
+  // $eg: // section||abc||cde||// end-section|| // section||123||345|| // section -> abc||123||cde||345
   // ------------------------------------------------------------------------
 
   export function mixer(): void {

@@ -164,7 +164,7 @@ function runGenerator(): void {
               if (eg.indexOf('||') === -1) {
                 if (eg.indexOf('->') !== -1) {
                   // transform example
-                  eg = `**before**:\`${eg.replace(/\s*->\s*/, '`<br>**after**:`')}\``;
+                  eg = `**before**: \`${eg.replace(/\s*->\s*/, '`<br>**after**: `')}\``;
                 } else {
                   // insert example
                   eg = `\`${eg}\``;

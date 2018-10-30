@@ -1,10 +1,9 @@
 # VS Code Utility Belt
 
 Strap on the belt and become a Ninja Developer with these 26 utilities.  
-This extension is also available for 
-Brackets([bracketsix](https://github.com/a-bentofreire/bracketstoix)) 
+This extension is also available for
+Brackets([bracketsix](https://github.com/a-bentofreire/bracketstoix))
 and Atom([atomtoix](https://atom.io/packages/atomtoix)).  
-
 
 ![Demo](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/demo.gif)
   
@@ -14,20 +13,20 @@ and Atom([atomtoix](https://atom.io/packages/atomtoix)).
 
 | Utility  | Example |
 | ------------- | ------------- |
-|Capitalize|**before**:`classNameFunc`<br>**after**:`ClassNameFunc`|
-|Camel Case|**before**:`ClassNameFunc`<br>**after**:`classNameFunc`|
-|Dash Case|**before**:`ClassNameFunc`<br>**after**:`class-name-func`|
-|Add Space before Uppercase<br>**Useful to transform functions names into documentation**|**before**:`doActionBefore`<br>**after**:`do Action Before`|
-|Url Encode|**before**:`https://github.com`<br>**after**:`https%3A%2F%2Fgithub.com`|
-|Url Decode|**before**:`https%3A%2F%2Fgithub.com`<br>**after**:`https://github.com`|
-|Reverse Assignment<br>**Reverses the terms of assignments or equal/different comparisons**|**before**:`x == y[x] + 5`<br>**after**:`y[x] + 5 == x`|
-|Unix To Win Slash<br>**Converts slashes to backslashes**|**before**:`chocolate/candy`<br>**after**:`chocolate\candy`|
-|Win To Unix Slash<br>**Converts backslashes to slashes**|**before**:`chocolate\candy`<br>**after**:`chocolate/candy`|
-|Single To Double Slash|**before**:`find\nagain`<br>**after**:`find\\\nagain`|
-|Double To Single Slash|**before**:`find\\\nagain`<br>**after**:`find\nagain`|
-|Regnize<br>**Adds slash to regular expression metachars**|**before**:`(\w+)[A-Z]a*b+text`<br>**after**:`\(\\w\+\)\[A-Z\]a\*b\+text`|
-|Header To Bookmark<br>**Converts markdown header text to Html Bookmark**|**before**:`Is this the header 你好?`<br>**after**:`is-this-the-header-你好`|
-|Mixer<br>**Mixes lines of different sections.**|**before**:<br>`// section`<br>`abc`<br>`cde`<br>`// end-section`<br>` // section`<br>`123`<br>`345`<br>**after**:<br>`abc`<br>`123`<br>`cde`<br>`345`|
+|Capitalize|**before**: `classNameFunc`<br>**after**: `ClassNameFunc`|
+|Camel Case|**before**: `ClassNameFunc`<br>**after**: `classNameFunc`|
+|Dash Case|**before**: `ClassNameFunc`<br>**after**: `class-name-func`|
+|Add Space before Uppercase<br>**Useful to transform functions names into documentation**|**before**: `doActionBefore`<br>**after**: `do Action Before`|
+|Url Encode|**before**: `https://github.com`<br>**after**: `https%3A%2F%2Fgithub.com`|
+|Url Decode|**before**: `https%3A%2F%2Fgithub.com`<br>**after**: `https://github.com`|
+|Reverse Assignment<br>**Reverses the terms of assignments or equal/different comparisons**|**before**: `x == y[x] + 5`<br>**after**: `y[x] + 5 == x`|
+|Unix To Win Slash<br>**Converts slashes to backslashes**|**before**: `chocolate/candy`<br>**after**: `chocolate\candy`|
+|Win To Unix Slash<br>**Converts backslashes to slashes**|**before**: `chocolate\candy`<br>**after**: `chocolate/candy`|
+|Single To Double Slash|**before**: `find\nagain`<br>**after**: `find\\\nagain`|
+|Double To Single Slash|**before**: `find\\\nagain`<br>**after**: `find\nagain`|
+|Regnize<br>**Adds slash to regular expression metachars**|**before**: `(\w+)[A-Z]a*b+text`<br>**after**: `\(\\w\+\)\[A-Z\]a\*b\+text`|
+|Header To Bookmark<br>**Converts markdown header text to Html Bookmark**|**before**: `Is this the header 你好?`<br>**after**: `is-this-the-header-你好`|
+|Mixer<br>**Mixes lines of different sections.**|**before**:<br>`// section`<br>`abc`<br>`cde`<br>`// end-section`<br>` // section`<br>`123`<br>`345`<br>` // section`<br>**after**:<br>`abc`<br>`123`<br>`cde`<br>`345`|
 |Remove Duplicated Lines<br>**Removes consecutive duplicated lines**|**before**:<br>`first`<br>`second`<br>`second`<br><br>**after**:<br><br>`first`<br>`second`|
 |Remove Empty Lines|**before**:<br>`first`<br><br>`second`<br><br>**after**:<br><br>`first`<br>`second`|
 |Join Lines<br>**Joins lines adding the computed expression at the end of every line**|**before**:<br>`red`<br>`green`<br><br>**after**:<br>`expr:(x\c{X0A}),`<br>`red(x0A),green(x0B)`|
@@ -41,42 +40,43 @@ and Atom([atomtoix](https://atom.io/packages/atomtoix)).
 |Insert Text At End|**before**:<br>`red`<br>`green`<br><br>**after**:<br>`expr: = \c{1}`<br>`red = 1`<br>`green = 2`|
 |Insert Text At Start|**before**:<br>`red`<br>`green`<br><br>**after**:<br>`expr: const \e{upper} =`<br>`const RED = red`<br>`const GREEN = green`|
 
-
 ## Selection Policies
 
 Every utility supports multiple cursors and multiple line selections.  
 However, It differs in the way each utility category handles the selections.  
 For every cursor, each line is process individually and the counter is increased per line.  
+
 - Line Utilities:  
-    * If no text is selected then all the document text is used.  
-    * If part of the line is selected then all the line is used  
+  - If no text is selected then all the document text is used.  
+  - If part of the line is selected then all the line is used  
 - Transform Text Utilities:  
-    * If no text is selected then all the document text is used.  
+  - If no text is selected then all the document text is used.  
 - Insert Text Utilities:
-    * If no text is selected then the cursor is the insertion point.  
-    * If multiple lines are selected then is inserted at start/end of every line.  
+  - If no text is selected then the cursor is the insertion point.  
+  - If multiple lines are selected then is inserted at start/end of every line.  
 
 ## Expressions
 
 Some of the utilities support expressions  
 An expression is a text supporting the following metachars:  
+
 - \n - newline
 - \t - tab
 - \c{start-value} - counter with optional start value  
-    - \c  0,1,2,...  
-    - \c{10} 10,11,12,...  
-    - \c{x00a} x00a,x00b,x00c,...  
-    - \c{XF} xF,x10,x11,...  
+  - \c  0,1,2,...  
+  - \c{10} 10,11,12,...  
+  - \c{x00a} x00a,x00b,x00c,...  
+  - \c{XF} xF,x10,x11,...  
 
 - \e{func} - transforms the selected text (line by line)  
     function list:  
-    - upper - UpperCase  
-    - lower - LowerCase  
-    - length - Selected text length  
-    - capitalize  
-    - isodate  
-    - isotimedate  
-    - uuid  
+  - upper - UpperCase  
+  - lower - LowerCase  
+  - length - Selected text length  
+  - capitalize  
+  - isodate  
+  - isotimedate  
+  - uuid  
 
 ## Contribute
 
