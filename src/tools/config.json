@@ -1,5 +1,5 @@
 {
-  "inputFiles": ["transformutilities", "lineutilities", "insertutilities"],
+  "inputFiles": ["transformutilities", "lineutilities", "insertutilities", "clipboardutilities"],
   "outputFiles": ["common/utility-list.ts", "../package.json", "../README.md"],
   "rootFolder": "../../src",
 

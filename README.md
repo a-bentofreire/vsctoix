@@ -1,6 +1,6 @@
 # VS Code Utility Belt
 
-Strap on the belt and become a Ninja Developer with these 26 utilities.  
+Strap on the belt and become a Ninja Developer with these 27 utilities.  
 This extension is also available for
 Brackets([bracketsix](https://github.com/a-bentofreire/bracketstoix))
 and Atom([atomtoix](https://atom.io/packages/atomtoix)).  
@@ -39,6 +39,7 @@ and Atom([atomtoix](https://atom.io/packages/atomtoix)).
 |Insert UUID|`7fff60f8-91e8-40ba-9053-56b0f3a487f0`|
 |Insert Text At End|**before**:<br>`red`<br>`green`<br><br>**after**:<br>`expr: = \c{1}`<br>`red = 1`<br>`green = 2`|
 |Insert Text At Start|**before**:<br>`red`<br>`green`<br><br>**after**:<br>`expr: const \e{upper} =`<br>`const RED = red`<br>`const GREEN = green`|
+|Extract Text<br>**Copies to the clipboard the captured group of a regular expression. Each capture is separated by tabs**|`(\w+) = (\w+)`|
 
 ## Selection Policies
 
@@ -85,3 +86,7 @@ Suggestions for more utilities and bug reports are welcome but don't forget the 
 ## License
 
 [MIT License+uuid License](https://github.com/a-bentofreire/uuid-licenses/blob/master/MIT-uuid-license.md)
+
+## Copyrights  
+  
+© 2019 [Alexandre Bento Freire](https://www.a-bentofreire.com)  

@@ -24,6 +24,8 @@ export namespace um {
     utLineUtility,
     /// passes inlines and replaces the selection with return lines
     utLinesUtility,
+    /// passes inlines but doesn't do any changes
+    utImmutableLinesUtility,
     /// inserts text at the start of the selection or at cursor point if no text is selected
     utInsertAtStartUtility,
     /// inserts text at the end of the selection or at cursor point if no text is selected
@@ -60,7 +62,7 @@ export namespace um {
     utilType: TIXUtilityType;
     sp?: TIXSelPolicy;
     pat?: string | RegExp;
-    repl?;
+    repl?: any;
   }
 
   export interface TIXUserInputReq {
@@ -174,6 +176,7 @@ export namespace um {
           break;
 
 
+        case TIXUtilityType.utImmutableLinesUtility:
         case TIXUtilityType.utLinesUtility:
         case TIXUtilityType.utLineUtility:
 
@@ -184,6 +187,7 @@ export namespace um {
             const line = up.doc.lineAt(lineI).text;
 
             switch (utilDef.utilType) {
+              case TIXUtilityType.utImmutableLinesUtility:
               case TIXUtilityType.utLinesUtility:
                 up.inlines.push(line);
                 break;
@@ -201,7 +205,10 @@ export namespace um {
             }
           }
           // run after all the selected lines
-          if (utilDef.utilType === TIXUtilityType.utLinesUtility) {
+          if (utilDef.utilType === TIXUtilityType.utImmutableLinesUtility) {
+            utilFunc(up);
+
+          } else if (utilDef.utilType === TIXUtilityType.utLinesUtility) {
             const outLines = utilFunc(up) as string[];
             const outRg = new vscode.Range(new vscode.Position(lineMin, 0),
               new vscode.Position(lineMax, up.doc.lineAt(lineMax).text.length));

@@ -60,3 +60,7 @@ Suggestions for more utilities and bug reports are welcome but don't forget the 
 ## License
 
 [MIT License+uuid License](https://github.com/a-bentofreire/uuid-licenses/blob/master/MIT-uuid-license.md)
+
+## Copyrights  
+  
+© 2019 [Alexandre Bento Freire](https://www.a-bentofreire.com)  

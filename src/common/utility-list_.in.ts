@@ -9,6 +9,7 @@
 import { transformutilities } from './transformutilities';
 import { lineutilities } from './lineutilities';
 import { insertutilities } from './insertutilities';
+import { clipboardutilities } from './clipboardutilities';
 
 export interface TUtilityDef {
   f: () => void;

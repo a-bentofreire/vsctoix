@@ -9,6 +9,7 @@
 import { transformutilities } from './transformutilities';
 import { lineutilities } from './lineutilities';
 import { insertutilities } from './insertutilities';
+import { clipboardutilities } from './clipboardutilities';
 
 export interface TUtilityDef {
   f: () => void;
@@ -41,5 +42,6 @@ export const utilityList: TUtilityDef[] = [
   { f: insertutilities.insertISOTimeDate, id: 'editor.insertISOTimeDate' },
   { f: insertutilities.insertUUID, id: 'editor.insertUUID' },
   { f: insertutilities.insertTextAtEnd, id: 'editor.insertTextAtEnd' },
-  { f: insertutilities.insertTextAtStart, id: 'editor.insertTextAtStart' }
+  { f: insertutilities.insertTextAtStart, id: 'editor.insertTextAtStart' },
+  { f: clipboardutilities.extractText, id: 'editor.extractText' }
 ];
