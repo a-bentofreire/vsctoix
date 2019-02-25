@@ -1,6 +1,6 @@
 # VS Code Utility Belt
 
-Strap on the belt and become a Ninja Developer with these 27 utilities.  
+Strap on the belt and become a Ninja Developer with these 29 utilities.  
 This extension is also available for
 Brackets([bracketsix](https://github.com/a-bentofreire/bracketstoix))
 and Atom([atomtoix](https://atom.io/packages/atomtoix)).  
@@ -24,6 +24,8 @@ and Atom([atomtoix](https://atom.io/packages/atomtoix)).
 |Win To Unix Slash<br>**Converts backslashes to slashes**|**before**: `chocolate\candy`<br>**after**: `chocolate/candy`|
 |Single To Double Slash|**before**: `find\nagain`<br>**after**: `find\\\nagain`|
 |Double To Single Slash|**before**: `find\\\nagain`<br>**after**: `find\nagain`|
+|Dash To Underscore|**before**: `find-deep-first`<br>**after**: `find_deep_first`|
+|Underscore To Dash|**before**: `find_deep_first`<br>**after**: `find-deep-first`|
 |Regnize<br>**Adds slash to regular expression metachars**|**before**: `(\w+)[A-Z]a*b+text`<br>**after**: `\(\\w\+\)\[A-Z\]a\*b\+text`|
 |Header To Bookmark<br>**Converts markdown header text to Html Bookmark**|**before**: `Is this the header 你好?`<br>**after**: `is-this-the-header-你好`|
 |Mixer<br>**Mixes lines of different sections.**|**before**:<br>`// section`<br>`abc`<br>`cde`<br>`// end-section`<br>` // section`<br>`123`<br>`345`<br>` // section`<br>**after**:<br>`abc`<br>`123`<br>`cde`<br>`345`|

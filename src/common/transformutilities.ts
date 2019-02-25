@@ -228,6 +228,46 @@ export namespace transformutilities {
     });
   }
 
+
+  // ------------------------------------------------------------------------
+  // $utility: dashToUnderscore
+  //
+  // $keywords: dash, underscore
+  // $eg: find-deep-first  ->  find_deep_first
+  // ------------------------------------------------------------------------
+
+  export function dashToUnderscore(): void {
+    um.utilityManager({
+      utilType: um.TIXUtilityType.utInTransform,
+      sp: um.TIXSelPolicy.Line,
+      pat: /-/g, repl: '_',
+    });
+  }
+
+  // ------------------------------------------------------------------------
+  // $utility: underscoreToDash
+  //
+  // $keywords: dash, underscore
+  // $eg: find_deep_first -> find-deep-first
+  // ------------------------------------------------------------------------
+
+  export function underscoreToDash(): void {
+    um.utilityManager({
+      utilType: um.TIXUtilityType.utInTransform,
+      sp: um.TIXSelPolicy.Line,
+      pat: /_/g, repl: '-',
+    });
+  }
+
+
+
+
+
+
+
+
+
+
   // ------------------------------------------------------------------------
   // $utility: regnize
   //

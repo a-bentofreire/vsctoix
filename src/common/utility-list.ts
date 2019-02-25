@@ -28,6 +28,8 @@ export const utilityList: TUtilityDef[] = [
   { f: transformutilities.winToUnixSlash, id: 'editor.winToUnixSlash' },
   { f: transformutilities.singleToDoubleSlash, id: 'editor.singleToDoubleSlash' },
   { f: transformutilities.doubleToSingleSlash, id: 'editor.doubleToSingleSlash' },
+  { f: transformutilities.dashToUnderscore, id: 'editor.dashToUnderscore' },
+  { f: transformutilities.underscoreToDash, id: 'editor.underscoreToDash' },
   { f: transformutilities.regnize, id: 'editor.regnize' },
   { f: transformutilities.headerToBookmark, id: 'editor.headerToBookmark' },
   { f: transformutilities.mixer, id: 'editor.mixer' },
