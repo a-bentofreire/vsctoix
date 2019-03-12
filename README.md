@@ -7,7 +7,12 @@ and Atom([atomtoix](https://atom.io/packages/atomtoix)).
 
 ![Demo](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/demo.gif)
   
+![Extract Text](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/extract-text.gif)
+  
+![Change Case](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/change-case.gif)
+  
 ![Mixer](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/mixer.gif)
+  
 
 ## Utilities
 
