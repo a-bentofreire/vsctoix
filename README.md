@@ -1,10 +1,12 @@
 # VS Code Utility Belt
 
-Strap on the belt and become a Ninja Developer with these 29 utilities.  
+Strap on the belt and become a Ninja Developer with these 30 utilities.  
 This extension is also available for
 Brackets([bracketsix](https://github.com/a-bentofreire/bracketstoix))
 and Atom([atomtoix](https://atom.io/packages/atomtoix)).  
 
+![Cycle Case](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/cycle-case.gif)
+  
 ![Demo](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/demo.gif)
   
 ![Extract Text](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/extract-text.gif)
@@ -21,6 +23,7 @@ and Atom([atomtoix](https://atom.io/packages/atomtoix)).
 |Capitalize|**before**: `classNameFunc`<br>**after**: `ClassNameFunc`|
 |Camel Case|**before**: `ClassNameFunc`<br>**after**: `classNameFunc`|
 |Dash Case|**before**: `ClassNameFunc`<br>**after**: `class-name-func`|
+|Cycle Case|**before**: `_ClassNameFunc`<br>**after**: `_classNameFunc -> _CLASS_NAME_FUNC -> _class_name_func -> _class-name-func -> _ClassNameFunc`|
 |Add Space before Uppercase<br>**Useful to transform functions names into documentation**|**before**: `doActionBefore`<br>**after**: `do Action Before`|
 |Url Encode|**before**: `https://github.com`<br>**after**: `https%3A%2F%2Fgithub.com`|
 |Url Decode|**before**: `https%3A%2F%2Fgithub.com`<br>**after**: `https://github.com`|

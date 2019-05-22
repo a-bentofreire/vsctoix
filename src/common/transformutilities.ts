@@ -67,6 +67,65 @@ export namespace transformutilities {
   }
 
   // ------------------------------------------------------------------------
+  // $utility: cycleCase
+  //
+  // $title: Cycle Case
+  // $keywords: case
+  // $eg: _ClassNameFunc  ->  _classNameFunc -> _CLASS_NAME_FUNC -> _class_name_func -> _class-name-func -> _ClassNameFunc
+  // ------------------------------------------------------------------------
+
+  export function cycleCase() {
+    um.utilityManager({
+      utilType: um.TIXUtilityType.utInTransform,
+      sp: um.TIXSelPolicy.Word,
+      pat: /\b([\w\-]+)\b/g,
+      repl: (_match: string, p1: string) => {
+        if (p1 === '') {
+          return '';
+        }
+
+        // test for capitalize
+        const m1 = p1.match(/^(_*)([A-Z])([^A-Z].*)$/);
+        if (m1 !== null) {
+          // => cycle to camel
+          return m1[1] + m1[2].toLowerCase() + m1[3];
+        }
+
+        // test for camel case
+        const m2 = p1.match(/^(_*)([^A-Z_]+[A-Z].*)$/);
+        if (m2 !== null) {
+          // => cycle to upperscore
+          return m2[1] + m2[2].replace(/([A-Z])/g,
+            (_match: string, p2: string) => '_' + p2).toUpperCase();
+        }
+
+        // test for upperscore case
+        if (p1.match(/^_*[A-Z].*_/) !== null) {
+          // => cycle to underscore
+          return p1.toLowerCase();
+        }
+
+        // test for underscore case
+        const m4 = p1.match(/^(_*)([^_]+_.*)$/);
+        if (m4 !== null) {
+          // => cycle to dash
+          return m4[1] + m4[2].replace(/_/g, '-');
+        }
+
+        // test for dash case
+        const m5 = p1.match(/^(_*)([^\-])(.*-.*)$/);
+        if (p1.indexOf('-') > 0) {
+          // => cycle to capitalize
+          return m5[1] + m5[2].toUpperCase() + m5[3].toLowerCase().replace(/-([a-z])/g,
+            (_match: string, p2: string) => p2.toUpperCase());
+        }
+
+        return p1;
+      },
+    });
+  }
+
+  // ------------------------------------------------------------------------
   // $utility: spaceByUpper
   //
   // $title: Add Space before Uppercase
@@ -90,17 +149,17 @@ export namespace transformutilities {
   // $eg: <h1>Title</h1>  ->  &lt;h1&gt;Title&lt;/h1&gt;
   // ------------------------------------------------------------------------
 
-/*   export function htmlEncode(): void {
-    um.utilityManager({
-      utilType: um.TIXUtilityType.utTransform,
-      sp: um.TIXSelPolicy.Line,
-    }, (up): string => {
-      const d = document.createElement('div');
-      d.textContent = up.intext;
-      return d.innerHTML;
-    });
-  }
- */
+  /*   export function htmlEncode(): void {
+      um.utilityManager({
+        utilType: um.TIXUtilityType.utTransform,
+        sp: um.TIXSelPolicy.Line,
+      }, (up): string => {
+        const d = document.createElement('div');
+        d.textContent = up.intext;
+        return d.innerHTML;
+      });
+    }
+   */
   // ------------------------------------------------------------------------
   // $--utility: htmlDecode (DISABLED)
   //
@@ -108,17 +167,17 @@ export namespace transformutilities {
   // $eg: &lt;h1&gt;Title&lt;/h1&gt;  ->  <h1>Title</h1>
   // ------------------------------------------------------------------------
 
-/*   export function htmlDecode(): void {
-    um.utilityManager({
-      utilType: um.TIXUtilityType.utTransform,
-      sp: um.TIXSelPolicy.Line,
-    }, (up): string => {
-      const d = document.createElement('div');
-      d.innerHTML = up.intext;
-      return d.textContent;
-    });
-  }
- */
+  /*   export function htmlDecode(): void {
+      um.utilityManager({
+        utilType: um.TIXUtilityType.utTransform,
+        sp: um.TIXSelPolicy.Line,
+      }, (up): string => {
+        const d = document.createElement('div');
+        d.innerHTML = up.intext;
+        return d.textContent;
+      });
+    }
+   */
   // ------------------------------------------------------------------------
   // $utility: urlEncode
   //

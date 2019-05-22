@@ -5,6 +5,8 @@ This extension is also available for
 Brackets([bracketsix](https://github.com/a-bentofreire/bracketstoix))
 and Atom([atomtoix](https://atom.io/packages/atomtoix)).  
 
+![Cycle Case](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/cycle-case.gif)
+  
 ![Demo](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/demo.gif)
   
 ![Extract Text](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/extract-text.gif)
