@@ -23,7 +23,7 @@ and Atom([atomtoix](https://atom.io/packages/atomtoix)).
 |Capitalize|**before**: `classNameFunc`<br>**after**: `ClassNameFunc`|
 |Camel Case|**before**: `ClassNameFunc`<br>**after**: `classNameFunc`|
 |Dash Case|**before**: `ClassNameFunc`<br>**after**: `class-name-func`|
-|Cycle Case|**before**: `_ClassNameFunc`<br>**after**: `_classNameFunc -> _CLASS_NAME_FUNC -> _class_name_func -> _class-name-func -> _ClassNameFunc`|
+|Cycle Case|**before**: `_ClassNameFunc`<br>**after**: `_classNameFunc -> _CLASS_NAME_FUNC -> _class_name_func -> _class-name-func -> _class name func ->_ClassNameFunc`|
 |Add Space before Uppercase<br>**Useful to transform functions names into documentation**|**before**: `doActionBefore`<br>**after**: `do Action Before`|
 |Url Encode|**before**: `https://github.com`<br>**after**: `https%3A%2F%2Fgithub.com`|
 |Url Decode|**before**: `https%3A%2F%2Fgithub.com`<br>**after**: `https://github.com`|

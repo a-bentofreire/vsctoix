@@ -71,33 +71,28 @@ export namespace transformutilities {
   //
   // $title: Cycle Case
   // $keywords: case
-  // $eg: _ClassNameFunc  ->  _classNameFunc -> _CLASS_NAME_FUNC -> _class_name_func -> _class-name-func -> _ClassNameFunc
+  // $eg: _ClassNameFunc  ->  _classNameFunc -> _CLASS_NAME_FUNC -> _class_name_func -> _class-name-func -> _class name func ->_ClassNameFunc
   // ------------------------------------------------------------------------
 
   export function cycleCase() {
     um.utilityManager({
       utilType: um.TIXUtilityType.utInTransform,
       sp: um.TIXSelPolicy.Word,
-      pat: /\b([\w\-]+)\b/g,
+      pat: /\b([\w\- ]+)\b/g,
       repl: (_match: string, p1: string) => {
         if (p1 === '') {
           return '';
         }
 
-        // test for capitalize
-        const m1 = p1.match(/^(_*)([A-Z])([^A-Z].*)$/);
-        if (m1 !== null) {
-          // => cycle to camel
-          return m1[1] + m1[2].toLowerCase() + m1[3];
+        // test for space case
+        // space testing should be the fist test
+        const m6 = p1.match(/^(_*)([^ ])(.* .*)$/);
+        if (m6 !== null) {
+          // => cycle to capitalize
+          return m6[1] + m6[2].toUpperCase() + m6[3].toLowerCase().replace(/ +([a-z])/g,
+            (_match: string, p2: string) => p2.toUpperCase());
         }
 
-        // test for camel case
-        const m2 = p1.match(/^(_*)([^A-Z_]+[A-Z].*)$/);
-        if (m2 !== null) {
-          // => cycle to upperscore
-          return m2[1] + m2[2].replace(/([A-Z])/g,
-            (_match: string, p2: string) => '_' + p2).toUpperCase();
-        }
 
         // test for upperscore case
         if (p1.match(/^_*[A-Z].*_/) !== null) {
@@ -113,11 +108,25 @@ export namespace transformutilities {
         }
 
         // test for dash case
-        const m5 = p1.match(/^(_*)([^\-])(.*-.*)$/);
-        if (p1.indexOf('-') > 0) {
-          // => cycle to capitalize
-          return m5[1] + m5[2].toUpperCase() + m5[3].toLowerCase().replace(/-([a-z])/g,
-            (_match: string, p2: string) => p2.toUpperCase());
+        const m5 = p1.match(/^(_*)([^\-].*-.*)$/);
+        if (m5 !== null) {
+          // => cycle to space case
+          return m5[1] + m5[2].replace(/-/g, ' ');
+        }
+
+        // test for capitalize (should be after symbol cases)
+        const m1 = p1.match(/^(_*)([A-Z])([^A-Z].*)$/);
+        if (m1 !== null) {
+          // => cycle to camel
+          return m1[1] + m1[2].toLowerCase() + m1[3];
+        }
+
+        // test for camel case (should be after symbol cases)
+        const m2 = p1.match(/^(_*)([^A-Z_]+[A-Z].*)$/);
+        if (m2 !== null) {
+          // => cycle to upperscore
+          return m2[1] + m2[2].replace(/([A-Z]+)/g,
+            (_match: string, p2: string) => '_' + p2).toUpperCase();
         }
 
         return p1;
