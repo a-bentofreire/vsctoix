@@ -5,16 +5,20 @@ This extension is also available for
 Brackets([bracketsix](https://github.com/a-bentofreire/bracketstoix))
 and Atom([atomtoix](https://atom.io/packages/atomtoix)).  
 
-- Add a shortcut and cycle between different case mode in a breeze.
+- Add a shortcut and cycle between different case mode in a breeze.  
+  
 ![Cycle Case](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/cycle-case.gif)
   
-- Copy to clipboard text patterns from a document.
+- Copy to clipboard text patterns from a document.  
+  
 ![Extract Text](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/extract-text.gif)
   
-- Insert text with macros at the start of every line.
+- Insert text with macros at the start of every line.  
+  
 ![Insert Text at Start](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/insert-text-at-start.gif)
   
-- Insert text with macros at the end of every line.
+- Insert text with macros at the end of every line.  
+  
 ![Insert Text at End](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/insert-text-at-end.gif)
   
 

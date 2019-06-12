@@ -9,7 +9,15 @@
     "insert",
     "case",
     "slash",
-    "encode"
+    "encode",
+    "urlencode",
+    "extract data",
+    "url decode",
+    "regular expressions",
+    "utilities",
+    "sort",
+    "uuid",
+    "split lines"
   ],
   "icon": "assets/icon128.png",
   "readme": "README.md",
