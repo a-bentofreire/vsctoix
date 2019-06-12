@@ -1,4 +1,3 @@
-/* WARNING: This file is generated automatically by npm run gen-utilities-data */
 'use strict';
 // uuid: be9bf2dc-cee0-4f68-986b-641a5cceb191
 

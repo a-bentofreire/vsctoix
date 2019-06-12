@@ -2,7 +2,7 @@
   "name": "vsctoix",
   "displayName": "vsctoix",
   "description": "extract data,urlencode,change case and slash,del dup, and more",
-  "version": "1.5.1",
+  "version": "1.5.2",
   "publisher": "a-bentofreire",
   "keywords": [
     "transform",
@@ -39,7 +39,6 @@
   "categories": [
     "Other"
   ],
-  "WARNING": "----- This file is generated automatically by npm run gen-utilities-data ------",
   "activationEvents": [
 "onCommand:editor.capitalize",
 "onCommand:editor.camelCase",
