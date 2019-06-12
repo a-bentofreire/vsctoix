@@ -17,7 +17,7 @@ export interface TUtilityDef {
 }
 
 export const utilityList: TUtilityDef[] = [
-    { f: transformutilities.capitalize, id: 'editor.capitalize' },
+  { f: transformutilities.capitalize, id: 'editor.capitalize' },
   { f: transformutilities.camelCase, id: 'editor.camelCase' },
   { f: transformutilities.dashCase, id: 'editor.dashCase' },
   { f: transformutilities.cycleCase, id: 'editor.cycleCase' },

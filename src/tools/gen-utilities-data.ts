@@ -12,7 +12,7 @@
 */
 
 let fs = require('fs');
-let cfg;
+let cfg = null;
 
 const AUTO_GEN_WARN = 'This file is generated automatically by npm run gen-utilities-data';
 
@@ -97,7 +97,7 @@ function runGenerator(): void {
   const utilityTable: { [cat: string]: TUtility[] } = {};
   const catTitles: { [utilityFile: string]: string } = {};
 
-  cfg['inputFiles'].forEach(utilityFile => {
+  cfg['utilityFiles'].forEach((utilityFile: string) => {
 
     const utilityCat = utilityTable[utilityFile] = [];
 
@@ -185,13 +185,20 @@ function runGenerator(): void {
       }).join('\n'),
   });
 
-  cfg['outputFiles'].forEach(outputName => {
-    const templateFile = outputName.replace(/(\.\w+)$/, '_.in$1');
+  const macroSections = cfg['macroSections'];
+
+  cfg['targetFiles'].forEach(targetFile => {
+    const templateFile = targetFile/* .replace(/(\.\w+)$/, '_.in$1') */;
     let temText = loadText(`${cfg['rootFolder']}/${templateFile}`);
+
+    const fileMacroSections = macroSections[targetFile];
+    fileMacroSections.forEach(section => {
+      temText = temText.replace(new RegExp(section['find'], "m"), section['replace']);
+    });
 
     macros.forEach(macro => { temText = temText.replace(macro.key, macro.value); });
 
-    saveText(`${cfg['rootFolder']}/${outputName}`, temText);
+    saveText(`${cfg['rootFolder']}/${targetFile}`, temText);
   });
   console.log('  >> Done <<');
 }
