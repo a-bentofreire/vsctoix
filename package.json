@@ -1,8 +1,8 @@
 {
   "name": "vsctoix",
   "displayName": "vsctoix",
-  "description": "extract data,urlencode,change case and slash,del dup, and more",
-  "version": "1.5.2",
+  "description": "extract,join,split,encode,mix,change case and slash,del dup,regex, and more",
+  "version": "1.6.0",
   "publisher": "a-bentofreire",
   "keywords": [
     "transform",

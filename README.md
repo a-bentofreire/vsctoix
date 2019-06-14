@@ -4,24 +4,33 @@ Strap on the belt and become a Ninja Developer with these 31 utilities.
 This extension is also available for
 Brackets([bracketsix](https://github.com/a-bentofreire/bracketstoix))
 and Atom([atomtoix](https://atom.io/packages/atomtoix)).  
-
-- Add a shortcut and cycle between different case mode in a breeze.  
+  
+If you find this extension useful, please, add a github star to show your support.  
+  
+- `IX: Cycle Case`: Add a shortcut and cycle between different case modes in a breeze.  
   
 ![Cycle Case](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/cycle-case.gif)
   
-- Copy to clipboard text patterns from a document.  
+- `IX: Extract Text` : Copy text patterns from a document to clipboard.  
   
 ![Extract Text](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/extract-text.gif)
   
-- Insert text with macros at the start of every line.  
+- `IX: Indent One Space`, `IX: Outdent One Space`: Insert or remove one space only at the start of every line regardless of indention mode.  
+  
+![Indent/Outdent](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/indent-outdent-lines.gif)
+  
+- `IX: Insert Text At Start`: Insert text with macros at the start of every line.  
   
 ![Insert Text at Start](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/insert-text-at-start.gif)
   
-- Insert text with macros at the end of every line.  
+- `IX: Insert Text At End`: Insert text with macros at the end of every line.  
   
 ![Insert Text at End](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/insert-text-at-end.gif)
   
-
+- `IX: Join Lines`: Join text with macros.  
+  
+![Join Lines](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/join-lines.gif)
+  
 ## Utilities
 
 | Utility  | Example |

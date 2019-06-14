@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Improve `package.json` keywords and categories.
 ### Added
 - Add utility: `sortNumericallyDescending`.
+- Add demo images to README.md.
 
 ## [1.5.2]
 ### Changed
