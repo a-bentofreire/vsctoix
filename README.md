@@ -1,6 +1,6 @@
 # VS Code Utility Belt
 
-Strap on the belt and become a Ninja Developer with these 30 utilities.  
+Strap on the belt and become a Ninja Developer with these 31 utilities.  
 This extension is also available for
 Brackets([bracketsix](https://github.com/a-bentofreire/bracketstoix))
 and Atom([atomtoix](https://atom.io/packages/atomtoix)).  
@@ -25,7 +25,7 @@ and Atom([atomtoix](https://atom.io/packages/atomtoix)).
 ## Utilities
 
 | Utility  | Example |
-| ------------- | ------------- |
+| ------------- |
 |Capitalize|**before**: `classNameFunc`<br>**after**: `ClassNameFunc`|
 |Camel Case|**before**: `ClassNameFunc`<br>**after**: `classNameFunc`|
 |Dash Case|**before**: `ClassNameFunc`<br>**after**: `class-name-func`|
@@ -48,6 +48,7 @@ and Atom([atomtoix](https://atom.io/packages/atomtoix)).
 |Join Lines<br>**Joins lines adding the computed expression at the end of every line**|**before**:<br>`red`<br>`green`<br><br>**after**:<br>`expr:(x\c{X0A}),`<br>`red(x0A),green(x0B)`|
 |Split Lines<br>**Split lines by an expression. Dynamic values aren't supported**|**before**:<br>`red,green`<br><br>**after**:<br>`expr: = \c{1}`<br>`red = 1`<br>`green = 2`|
 |Sort Numerically Ascending<br>**For each line uses the first number as sort key**|**before**:<br>`10. red`<br>`2. green`<br><br>**after**:<br><br>`2. green`<br>`10. red`|
+|Sort Numerically Descending<br>**For each line uses the first number as sort key**|**before**:<br>`10. red`<br>`2. green`<br><br>**after**:<br><br>`10. red`<br>`2. green`|
 |Indent One Space<br>**Adds one space to the beginning of each line**||
 |Outdent One Space<br>**Removes one space to the beginning of each line**||
 |Insert ISO Date|`2018-02-08`|

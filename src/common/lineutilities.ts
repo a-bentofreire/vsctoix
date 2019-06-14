@@ -11,6 +11,15 @@ import { ep } from './expressionprocessor';
 
 export namespace lineutilities {
 
+  function getLinesKeyPairs(up): [number, string][] {
+    const keylines: [number, string][] = up.inlines.map((line => {
+      const match = line.match(/(\d+)/);
+      const key = match ? parseInt(match[0]) : 0;
+      return [key, line];
+    }));
+    return keylines;
+  }
+
   // ------------------------------------------------------------------------
   //                               Line Utilities
   //
@@ -131,12 +140,27 @@ export namespace lineutilities {
       utilType: um.TIXUtilityType.utLinesUtility,
     },
       (up): string[] => {
-        const keylines: any[][] = up.inlines.map((line => {
-          const match = line.match(/(\d+)/);
-          const key = match ? parseInt(match[0]) : 0;
-          return [key, line];
-        }));
+        const keylines = getLinesKeyPairs(up);
         keylines.sort((a, b) => a[0] - b[0]);
+        return keylines.map(keypair => keypair[1]);
+      });
+  }
+
+  // ------------------------------------------------------------------------
+  // $utility: sortNumericallyDescending
+  //
+  // $keywords: sort
+  // $eg: 10. red||2. green||->||10. red||2. green
+  // $desc: For each line uses the first number as sort key
+  // ------------------------------------------------------------------------
+
+  export function sortNumericallyDescending(): void {
+    um.utilityManager({
+      utilType: um.TIXUtilityType.utLinesUtility,
+    },
+      (up): string[] => {
+        const keylines = getLinesKeyPairs(up);
+        keylines.sort((a, b) => b[0] - a[0]);
         return keylines.map(keypair => keypair[1]);
       });
   }

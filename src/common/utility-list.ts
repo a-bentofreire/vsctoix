@@ -39,6 +39,7 @@ export const utilityList: TUtilityDef[] = [
   { f: lineutilities.joinLines, id: 'editor.joinLines' },
   { f: lineutilities.splitLines, id: 'editor.splitLines' },
   { f: lineutilities.sortNumericallyAscending, id: 'editor.sortNumericallyAscending' },
+  { f: lineutilities.sortNumericallyDescending, id: 'editor.sortNumericallyDescending' },
   { f: lineutilities.indentOneSpace, id: 'editor.indentOneSpace' },
   { f: lineutilities.outdentOneSpace, id: 'editor.outdentOneSpace' },
   { f: insertutilities.insertISODate, id: 'editor.insertISODate' },

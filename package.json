@@ -48,37 +48,38 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:editor.capitalize",
-    "onCommand:editor.camelCase",
-    "onCommand:editor.dashCase",
-    "onCommand:editor.cycleCase",
-    "onCommand:editor.spaceByUpper",
-    "onCommand:editor.urlEncode",
-    "onCommand:editor.urlDecode",
-    "onCommand:editor.reverseAssignment",
-    "onCommand:editor.unixToWinSlash",
-    "onCommand:editor.winToUnixSlash",
-    "onCommand:editor.singleToDoubleSlash",
-    "onCommand:editor.doubleToSingleSlash",
-    "onCommand:editor.dashToUnderscore",
-    "onCommand:editor.underscoreToDash",
-    "onCommand:editor.regnize",
-    "onCommand:editor.headerToBookmark",
-    "onCommand:editor.mixer",
-    "onCommand:editor.removeDuplicatedLines",
-    "onCommand:editor.removeEmptyLines",
-    "onCommand:editor.joinLines",
-    "onCommand:editor.splitLines",
-    "onCommand:editor.sortNumericallyAscending",
-    "onCommand:editor.indentOneSpace",
-    "onCommand:editor.outdentOneSpace",
-    "onCommand:editor.insertISODate",
-    "onCommand:editor.insertISOTimeDate",
-    "onCommand:editor.insertUUID",
-    "onCommand:editor.insertTextAtEnd",
-    "onCommand:editor.insertTextAtStart",
-    "onCommand:editor.extractText"
-  ],
+"onCommand:editor.capitalize",
+"onCommand:editor.camelCase",
+"onCommand:editor.dashCase",
+"onCommand:editor.cycleCase",
+"onCommand:editor.spaceByUpper",
+"onCommand:editor.urlEncode",
+"onCommand:editor.urlDecode",
+"onCommand:editor.reverseAssignment",
+"onCommand:editor.unixToWinSlash",
+"onCommand:editor.winToUnixSlash",
+"onCommand:editor.singleToDoubleSlash",
+"onCommand:editor.doubleToSingleSlash",
+"onCommand:editor.dashToUnderscore",
+"onCommand:editor.underscoreToDash",
+"onCommand:editor.regnize",
+"onCommand:editor.headerToBookmark",
+"onCommand:editor.mixer",
+"onCommand:editor.removeDuplicatedLines",
+"onCommand:editor.removeEmptyLines",
+"onCommand:editor.joinLines",
+"onCommand:editor.splitLines",
+"onCommand:editor.sortNumericallyAscending",
+"onCommand:editor.sortNumericallyDescending",
+"onCommand:editor.indentOneSpace",
+"onCommand:editor.outdentOneSpace",
+"onCommand:editor.insertISODate",
+"onCommand:editor.insertISOTimeDate",
+"onCommand:editor.insertUUID",
+"onCommand:editor.insertTextAtEnd",
+"onCommand:editor.insertTextAtStart",
+"onCommand:editor.extractText"
+],
   "main": "./out/extension",
   "contributes": {
     "commands": [
@@ -171,6 +172,10 @@
         "title": "IX: Sort Numerically Ascending"
       },
       {
+        "command": "editor.sortNumericallyDescending",
+        "title": "IX: Sort Numerically Descending"
+      },
+      {
         "command": "editor.indentOneSpace",
         "title": "IX: Indent One Space"
       },
@@ -202,7 +207,7 @@
         "command": "editor.extractText",
         "title": "IX: Extract Text"
       }
-    ]
+]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

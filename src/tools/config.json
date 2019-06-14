@@ -40,6 +40,6 @@
     ]
   },
   "action": "  { f: ${funcstr}, id: 'editor.${name}' }",
-  "command": "{ \"command\": \"editor.${name}\", \"title\": \"IX: ${title}\"}",
+  "command": "      {\n        \"command\": \"editor.${name}\",\n        \"title\": \"IX: ${title}\"\n      }",
   "event": "\"onCommand:editor.${name}\""
 }
