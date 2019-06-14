@@ -34,7 +34,7 @@ If you find this extension useful, please, add a github star to show your suppor
 ## Utilities
 
 | Utility  | Example |
-| ------------- |
+| ------------- | ------------- |
 |Capitalize|**before**: `classNameFunc`<br>**after**: `ClassNameFunc`|
 |Camel Case|**before**: `ClassNameFunc`<br>**after**: `classNameFunc`|
 |Dash Case|**before**: `ClassNameFunc`<br>**after**: `class-name-func`|
