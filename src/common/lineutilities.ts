@@ -119,7 +119,6 @@ export namespace lineutilities {
       (up): string[] => {
         const userInput = ep.processExpression(up.userinputs[0], up.selNr, up.intext);
         let resLines = [];
-        const index = 0;
         up.inlines.forEach((line) => {
           resLines = resLines.concat(line.split(userInput));
         });
@@ -198,6 +197,65 @@ export namespace lineutilities {
         up.intext.substr(1) : up.intext);
   }
 
+  // ------------------------------------------------------------------------
+  // $utility: breakLineAt
+  //
+  // $keywords: break lines
+  // $eg: __NONE__
+  // $desc: Break lines at a certain position
+  // $eg: Too long line ->  too long||line
+  // ------------------------------------------------------------------------
+
+  function execBreakLineAt(line: string, maxChars: number,
+    toBreakWords: boolean): string {
+
+    let start = 0;
+    let at: number;
+    let stest: string;
+
+    while (start + maxChars < line.length) {
+      at = start + maxChars;
+      if (!toBreakWords) {
+        stest = line.substring(start, at).replace(/[\w_]/g, '0');
+        for (at -= start; at > 0 && stest[at - 1] === '0'; at--) { }
+        if ((!at) && (stest[0] === '0')) {
+          at = maxChars;
+        }
+        at += start;
+      }
+      line = line.substr(0, at) + '\n' + line.substr(at);
+      start = at + 1;
+    }
+    return line;
+  }
+
+  export function breakLineAt(): void {
+    um.utilityManagerWithUserInputs({
+      utilType: um.TIXUtilityType.utLinesUtility,
+      sp: um.TIXSelPolicy.All,
+    },
+      [
+        { prompt: 'Max number of Chars(add / at the end to allow word break)' },
+      ],
+
+      (up): string[] => {
+        const userInput = up.userinputs[0];
+        if (!userInput) {
+          return up.inlines;
+        }
+        const toBreakWords = userInput[userInput.length - 1] === '/';
+        const sMaxChars = userInput.substr(0, userInput.length - (toBreakWords ? 1 : 0));
+        const maxChars = parseInt(sMaxChars);
+        if (maxChars === 0) {
+          return up.inlines;
+        }
+        let resLines: string[] = [];
+        up.inlines.forEach((line) => {
+          resLines = resLines.concat(execBreakLineAt(line, maxChars, toBreakWords));
+        });
+        return resLines;
+      });
+  }
 }
 
 declare var module;

@@ -1,6 +1,6 @@
 # VS Code Utility Belt
 
-Strap on the belt and become a Ninja Developer with these 31 utilities.  
+Strap on the belt and become a Ninja Developer with these 32 utilities.  
 This extension is also available for
 Brackets([bracketsix](https://github.com/a-bentofreire/bracketstoix))
 and Atom([atomtoix](https://atom.io/packages/atomtoix)).  
@@ -31,6 +31,11 @@ If you find this extension useful, please, add a github star to show your suppor
   
 ![Join Lines](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/join-lines.gif)
   
+- `IX: Break Line At`: Splits each line in order to be no longer than `Max number of Chars`.
+  The words aren't broken unless it's added `/` at the end the user input. (e.g. `40/`).   
+  
+![Break Line At]((https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/break-line-at.gif)
+  
 ## Utilities
 
 | Utility  | Example |
@@ -60,6 +65,7 @@ If you find this extension useful, please, add a github star to show your suppor
 |Sort Numerically Descending<br>**For each line uses the first number as sort key**|**before**:<br>`10. red`<br>`2. green`<br><br>**after**:<br><br>`10. red`<br>`2. green`|
 |Indent One Space<br>**Adds one space to the beginning of each line**||
 |Outdent One Space<br>**Removes one space to the beginning of each line**||
+|Break Line At<br>**Break lines at a certain position**|**before**:<br>`Too long line`<br>**after**:<br>`too long`<br>`line`|
 |Insert ISO Date|`2018-02-08`|
 |Insert ISO TimeDate|`2018-02-08 10:12:15`|
 |Insert UUID|`7fff60f8-91e8-40ba-9053-56b0f3a487f0`|
