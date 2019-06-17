@@ -2,7 +2,7 @@
   "name": "vsctoix",
   "displayName": "vsctoix",
   "description": "extract,join,split,encode,mix,change case and slash,del dup,regex, and more",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "publisher": "a-bentofreire",
   "keywords": [
     "transform",

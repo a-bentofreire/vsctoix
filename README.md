@@ -34,7 +34,7 @@ If you find this extension useful, please, add a github star to show your suppor
 - `IX: Break Line At`: Splits each line in order to be no longer than `Max number of Chars`.
   The words aren't broken unless it's added `/` at the end the user input. (e.g. `40/`).   
   
-![Break Line At]((https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/break-line-at.gif)
+![Break Line At](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/break-line-at.gif)
   
 ## Utilities
 
