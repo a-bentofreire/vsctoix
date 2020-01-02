@@ -286,6 +286,15 @@ export namespace um {
 
     }
   }
+
+  // ------------------------------------------------------------------------
+  //                               getConfig
+  // ------------------------------------------------------------------------
+
+  export function getConfig(itemName: string) {
+    const vscConfig = vscode.workspace.getConfiguration("vsctoix");
+    return vscConfig.get(itemName);
+  }
 }
 
 declare var module;

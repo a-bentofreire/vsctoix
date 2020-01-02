@@ -256,6 +256,60 @@ export namespace lineutilities {
         return resLines;
       });
   }
+
+  // ------------------------------------------------------------------------
+  // $utility: replaceRecipes
+  //
+  // $keywords: replace text
+  // $desc: replaces text from a list of pre-defined recipes (read Replace Recipes section)
+  // ------------------------------------------------------------------------
+
+  interface TRecipe {
+    name: string;
+    pattern: string;
+    replaceWith: string;
+    isRegExp: boolean;
+    isExpression: boolean;
+    ignoreCase: boolean;
+  }
+
+  export function replaceRecipes(): void {
+
+    const recipes = um.getConfig('replaceRecipes') as TRecipe[];
+    let recipeNames = recipes.map((item: object, index: number) => `${index + 1} - ${item['name']}`);
+    um.utilityManagerWithUserInputs({
+      utilType: um.TIXUtilityType.utLinesUtility,
+    },
+      // @TODO: Find a better way to display info to the user
+      [{ prompt: "Type the recipe number or name | " + recipeNames.join(' | ') }],
+      (up): string[] => {
+        const recipes = um.getConfig('replaceRecipes') as TRecipe[];
+        const userInput = up.userinputs[0];
+        let userSelIndex = -1;
+        if (userInput.match(/^\s*\d+\s*$/) !== null) {
+          userSelIndex = parseInt(userInput, 10) - 1;
+        } else {
+          userSelIndex = recipes.findIndex((recipe) => recipe.name === userInput);
+        }
+
+        if (userSelIndex >= 0 && userSelIndex < recipes.length) {
+          const recipe = recipes[userSelIndex];
+          const isExpression = recipe.isExpression !== false;
+          const regPattern = recipe.isRegExp !== false ?
+            new RegExp(recipe.pattern, recipe.ignoreCase === true ? 'i' : undefined) : recipe.pattern;
+          const replaceWith = recipe.replaceWith;
+          let resLines = [];
+          up.inlines.forEach((line: string, index: number) => {
+            const replaceResult = line.replace(regPattern, replaceWith);
+            resLines.push(isExpression ? ep.processExpression(replaceResult, index, line)
+              : replaceResult);
+          });
+          return resLines;
+        } else {
+          return up.inlines;
+        }
+      });
+  }
 }
 
 declare var module;

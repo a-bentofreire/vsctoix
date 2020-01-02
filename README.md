@@ -1,11 +1,11 @@
 # VS Code Utility Belt
 
-Strap on the belt and become a Ninja Developer with these 32 utilities.  
+Strap on the belt and become a Ninja Developer with these 33 utilities.  
 This extension is also available for
 Brackets([bracketsix](https://github.com/a-bentofreire/bracketstoix))
 and Atom([atomtoix](https://atom.io/packages/atomtoix)).  
   
-If you find this extension useful, please, add a github star to show your support.  
+If you find this extension useful, please, write a review or add a github star to show your support.  
   
 - `IX: Cycle Case`: Add a shortcut and cycle between different case modes in a breeze.  
   
@@ -66,6 +66,7 @@ If you find this extension useful, please, add a github star to show your suppor
 |Indent One Space<br>**Adds one space to the beginning of each line**||
 |Outdent One Space<br>**Removes one space to the beginning of each line**||
 |Break Line At<br>**Break lines at a certain position**|**before**:<br>`Too long line`<br>**after**:<br>`too long`<br>`line`|
+|Replace Recipes<br>**replaces text from a list of pre-defined recipes (read Replace Recipes section)**|`replace text`|
 |Insert ISO Date|`2018-02-08`|
 |Insert ISO TimeDate|`2018-02-08 10:12:15`|
 |Insert UUID|`7fff60f8-91e8-40ba-9053-56b0f3a487f0`|
@@ -110,6 +111,37 @@ An expression is a text supporting the following metachars:
   - isodate  
   - isotimedate  
   - uuid  
+
+## Replace Recipes
+
+Replace Recipes must be added manually to the `settings.json`.  
+This tool is still in beta phase.  
+
+| Field  | Type | Description |
+| ------------- | ------------- | ------------- |
+|name|string| Recipe name |
+|pattern|string| Find Expression (RegExp or String) |
+|replaceWith|string| Replace Text |
+|isRegExp|boolean| if `false` then pattern is a static string |
+|isExpression|boolean| if `false` then result doesn't exec the expression engine |
+|ignoreCase|boolean| if `true` and `isRegExp` uses `ignore case` option |
+
+
+ex:
+```json
+"vsctoix.replaceRecipes": [
+    {
+      "name": "repl with let",
+      "pattern": "\\b(var|const)\\b",
+      "replaceWith": "let"
+    },
+    {
+      "name": "Remove starting dash",
+      "pattern": "^\\s*-",
+      "replaceWith": ""
+    },
+  ],
+```
 
 ## Contribute
 

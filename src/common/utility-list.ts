@@ -43,6 +43,7 @@ export const utilityList: TUtilityDef[] = [
   { f: lineutilities.indentOneSpace, id: 'editor.indentOneSpace' },
   { f: lineutilities.outdentOneSpace, id: 'editor.outdentOneSpace' },
   { f: lineutilities.breakLineAt, id: 'editor.breakLineAt' },
+  { f: lineutilities.replaceRecipes, id: 'editor.replaceRecipes' },
   { f: insertutilities.insertISODate, id: 'editor.insertISODate' },
   { f: insertutilities.insertISOTimeDate, id: 'editor.insertISOTimeDate' },
   { f: insertutilities.insertUUID, id: 'editor.insertUUID' },

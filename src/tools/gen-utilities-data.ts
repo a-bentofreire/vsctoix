@@ -187,7 +187,7 @@ function runGenerator(): void {
 
   const macroSections = cfg['macroSections'];
 
-  cfg['targetFiles'].forEach(targetFile => {
+  cfg['targetFiles'].forEach((targetFile: string) => {
     const templateFile = targetFile/* .replace(/(\.\w+)$/, '_.in$1') */;
     let temText = loadText(`${cfg['rootFolder']}/${templateFile}`);
 

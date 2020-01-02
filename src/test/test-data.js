@@ -1,4 +1,5 @@
-/*  Insert Text At Start  */
+/*
+//  Insert Text At Start
     moveUp
     moveDown
     fire
@@ -6,7 +7,7 @@
 
 
 
-/*  Insert Text At End */
+//  Insert Text At End
     const moveUp
     const moveDown
     const fire
@@ -14,7 +15,7 @@
 
 
 
-/*  Reverse Assignment */
+//  Reverse Assignment
     if ( LineNr + 1 < MaxLine ) {
 
     }
@@ -22,7 +23,7 @@
 
 
 
-/*  Slashes */
+//  Slashes
     'Users\prog\Documents'
     'usr/shared/bin'
     '(\w+)\d+\s*'
@@ -30,14 +31,14 @@
 
 
 
-/*  Encoding */
+//  Encoding
     https://www.github.com
     <h1>Title</h1>
 
 
 
 
-/*  sort Numerically */
+//  sort Numerically
     '10. blue'
     '1.  green'
     '9.  magenta'
@@ -46,13 +47,13 @@
 
 
 
-/*  Split/Join */
+//  Split/Join
 yellow,black,
 green,red,blue
 
 
 
-/*  List */
+//  List
     STRAWBERRY
 
     pineapple
@@ -65,10 +66,7 @@ green,red,blue
 
 
 
-/*   Case  */
-
-
-
+//   Case
 
 
 
@@ -95,3 +93,10 @@ const  yellow
 const  green
 don't touch me
 
+
+[Replace Rules]
+var x = 67;
+VAR y = 45;
+const z = 56;
+
+*/
