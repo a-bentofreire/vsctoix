@@ -1,9 +1,7 @@
 'use strict';
-// uuid: c6f19622-ddfd-4987-8823-85301440bc7e
 
 // ------------------------------------------------------------------------
-// Copyright (c) 2018-2019 Alexandre Bento Freire. All rights reserved.
-// Licensed under the MIT License+uuid License. See License.txt for details
+// Copyright (c) 2018-2022 Alexandre Bento Freire. All rights reserved.
 // ------------------------------------------------------------------------
 
 export namespace ep {
@@ -41,7 +39,7 @@ export namespace ep {
   }
 
   export function regnize(text: string, isFind: boolean): string {
-    const REGNIZEFIND = /([\\.()\[\]*+\^$])/g;
+    const REGNIZEFIND = /([\\.()[\]*+^$])/g;
     const REGNIZEREPL = '\\$1';
     return text.replace(isFind ? REGNIZEFIND : /(\$\d)/g, REGNIZEREPL);
   }
@@ -108,7 +106,7 @@ export namespace ep {
 
     return expression.replace(/\\(n|t|(?:c|e)(?:\{(\w+)\}){0,1})/g,
       (match: string, tag: string, valueParam: string): string => {
-        switch (tag.substr(0, 1)) {
+        switch (tag.substring(0, 1)) {
           case 'n': return '\n';
           case 't': return '\t';
           case '\\': return '\\';
@@ -119,7 +117,7 @@ export namespace ep {
 
               // handles hex numbers
               if (firstChar === 'x' || firstChar === 'X') {
-                value += parseInt(valueParam.substr(1), 16);
+                value += parseInt(valueParam.substring(1), 16);
                 let eres = Number(value).toString(16);
                 // makes sure that the output has the same case as the input
                 eres = firstChar === 'x' ? eres.toLowerCase() : eres.toUpperCase();
@@ -142,5 +140,5 @@ export namespace ep {
 
 }
 
-declare var module;
+declare const module;
 module.exports = { ep };

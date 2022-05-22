@@ -1,9 +1,7 @@
 'use strict';
-// uuid: 84b415dd-ce34-4cc9-bb37-4cd61b1e47ef
 
 // ------------------------------------------------------------------------
-// Copyright (c) 2018-2019 Alexandre Bento Freire. All rights reserved.
-// Licensed under the MIT License+uuid License. See License.txt for details
+// Copyright (c) 2018-2022 Alexandre Bento Freire. All rights reserved.
 // ------------------------------------------------------------------------
 
 import { um } from './utilitymanager';
@@ -102,5 +100,5 @@ export namespace insertutilities {
 
 }
 
-declare var module;
+declare const module;
 module.exports = { insertutilities };

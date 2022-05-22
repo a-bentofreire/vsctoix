@@ -1,9 +1,7 @@
 'use strict';
-// uuid: d477c481-d965-4afa-baac-56343a395d74
 
 // ------------------------------------------------------------------------
-// Copyright (c) 2018-2019 Alexandre Bento Freire. All rights reserved.
-// Licensed under the MIT License+uuid License. See License.txt for details
+// Copyright (c) 2018-2022 Alexandre Bento Freire. All rights reserved.
 // ------------------------------------------------------------------------
 
 import { um } from './utilitymanager';
@@ -223,7 +221,7 @@ export namespace lineutilities {
         }
         at += start;
       }
-      line = line.substr(0, at) + '\n' + line.substr(at);
+      line = line.substr(0, at) + '\n' + line.substring(at);
       start = at + 1;
     }
     return line;
@@ -312,5 +310,5 @@ export namespace lineutilities {
   }
 }
 
-declare var module;
+declare const module;
 module.exports = { lineutilities };

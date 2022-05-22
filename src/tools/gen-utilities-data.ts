@@ -1,9 +1,7 @@
 'use strict';
-// uuid: 822965e4-2f5d-48ab-8707-d366e2b19136
 
 // ------------------------------------------------------------------------
-// Copyright (c) 2018-2019 Alexandre Bento Freire. All rights reserved.
-// Licensed under the MIT License+uuid License. See License.txt for details
+// Copyright (c) 2018-2022 Alexandre Bento Freire. All rights reserved.
 // ------------------------------------------------------------------------
 
 /*
@@ -11,7 +9,7 @@
   and transforms the output file templates by inserting the list of utilities
 */
 
-let fs = require('fs');
+const fs = require('fs');
 let cfg = null;
 
 const AUTO_GEN_WARN = 'This file is generated automatically by npm run gen-utilities-data';
@@ -33,7 +31,7 @@ function saveText(filename: string, data: string): void {
 // ------------------------------------------------------------------------
 
 function getTitleFromName(name: string): string {
-  return name[0].toUpperCase() + name.substr(1).replace(/([A-Z])/g, ' $1');
+  return name[0].toUpperCase() + name.substring(1).replace(/([A-Z])/g, ' $1');
 }
 
 // ------------------------------------------------------------------------

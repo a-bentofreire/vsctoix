@@ -1,9 +1,7 @@
 'use strict';
-// uuid: 85d79009-f9ac-4c0f-a948-6d1d90ad3db7
 
 // ------------------------------------------------------------------------
-// Copyright (c) 2018-2019 Alexandre Bento Freire. All rights reserved.
-// Licensed under the MIT License+uuid License. See License.txt for details
+// Copyright (c) 2018-2022 Alexandre Bento Freire. All rights reserved.
 // ------------------------------------------------------------------------
 
 import * as vscode from 'vscode';
@@ -297,5 +295,5 @@ export namespace um {
   }
 }
 
-declare var module;
+declare const module;
 module.exports = { um };

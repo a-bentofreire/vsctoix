@@ -1,9 +1,7 @@
 'use strict';
-// uuid: 3ea0fe12-a11b-4fde-9d68-ccd7a3ee7208
 
 // ------------------------------------------------------------------------
-// Copyright (c) 2018-2019 Alexandre Bento Freire. All rights reserved.
-// Licensed under the MIT License+uuid License. See License.txt for details
+// Copyright (c) 2018-2022 Alexandre Bento Freire. All rights reserved.
 // ------------------------------------------------------------------------
 
 import { um } from './utilitymanager';
@@ -108,7 +106,7 @@ export namespace transformutilities {
         }
 
         // test for dash case
-        const m5 = p1.match(/^(_*)([^\-].*-.*)$/);
+        const m5 = p1.match(/^(_*)([^-].*-.*)$/);
         if (m5 !== null) {
           // => cycle to space case
           return m5[1] + m5[2].replace(/-/g, ' ');
@@ -365,7 +363,7 @@ export namespace transformutilities {
       utilType: um.TIXUtilityType.utTransform,
     }, (up): string => up.intext.trim().toLowerCase()
       .replace(/[^\w\- \u0080-\uFFFFF]+/ug, ' ')
-      .replace(/\s+/g, '-').replace(/\-+$/, ''));
+      .replace(/\s+/g, '-').replace(/-+$/, ''));
   }
 
   // ------------------------------------------------------------------------
@@ -441,5 +439,5 @@ export namespace transformutilities {
   }
 }
 
-declare var module;
+declare const module;
 module.exports = { transformutilities };
