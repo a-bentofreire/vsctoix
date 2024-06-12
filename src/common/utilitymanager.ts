@@ -1,7 +1,7 @@
 'use strict';
 
 // ------------------------------------------------------------------------
-// Copyright (c) 2018-2022 Alexandre Bento Freire. All rights reserved.
+// Copyright (c) 2018-2024 Alexandre Bento Freire. All rights reserved.
 // ------------------------------------------------------------------------
 
 import * as vscode from 'vscode';
@@ -67,6 +67,11 @@ export namespace um {
     prompt?: string;
   }
 
+  export interface TIXUserOptionsReq {
+    placeHolder?: string;
+    items?: string[];
+  }
+
   enum TIXAddLineStage { firstLine, middleLine, lastLine }
 
   // ------------------------------------------------------------------------
@@ -87,7 +92,7 @@ export namespace um {
   // ------------------------------------------------------------------------
 
   export async function utilityManagerWithUserInputs(utilDef: TIXUtilityDef,
-    IXUserInputReqs: TIXUserInputReq[],
+    IXUserInputReqs: (TIXUserInputReq & TIXUserOptionsReq)[],
     utilFunc: TIXUtilityFunc) {
 
     if (IXUserInputReqs.length) {
@@ -95,7 +100,10 @@ export namespace um {
       const userinputs = [];
 
       for (let i = 0; i < reqCount; i++) {
-        const userinput = await window.showInputBox(IXUserInputReqs[i]);
+        const inputReq = IXUserInputReqs[i];
+        const userinput = inputReq.items
+          ? await window.showQuickPick(inputReq.items, { placeHolder: inputReq.placeHolder })
+          : await window.showInputBox(inputReq);
         if (userinput === undefined) {
           return;
         }
@@ -178,39 +186,39 @@ export namespace um {
         case TIXUtilityType.utLinesUtility:
         case TIXUtilityType.utLineUtility:
 
-          const lineMin = hasNoSels ? 0 : sel.start.line;
-          const lineMax = hasNoSels ? up.doc.lineCount - 1 : sel.end.line;
+            const lineMin = hasNoSels ? 0 : sel.start.line;
+            const lineMax = hasNoSels ? up.doc.lineCount - 1 : sel.end.line;
 
-          for (let lineI = lineMin; lineI <= lineMax; lineI++) {
-            const line = up.doc.lineAt(lineI).text;
+            for (let lineI = lineMin; lineI <= lineMax; lineI++) {
+              const line = up.doc.lineAt(lineI).text;
 
-            switch (utilDef.utilType) {
-              case TIXUtilityType.utImmutableLinesUtility:
-              case TIXUtilityType.utLinesUtility:
-                up.inlines.push(line);
-                break;
+              switch (utilDef.utilType) {
+                case TIXUtilityType.utImmutableLinesUtility:
+                case TIXUtilityType.utLinesUtility:
+                  up.inlines.push(line);
+                  break;
 
-              case TIXUtilityType.utLineUtility:
-                up.intext = line;
-                const outLine = utilFunc(up) as string;
-                if (line !== outLine) {
-                  up.changes.push({
-                    location: new vscode.Range(new vscode.Position(lineI, 0),
-                      new vscode.Position(lineI, line.length)), value: outLine,
-                  });
-                }
-                break;
+                case TIXUtilityType.utLineUtility:
+                  up.intext = line;
+                  const outLine = utilFunc(up) as string;
+                  if (line !== outLine) {
+                    up.changes.push({
+                      location: new vscode.Range(new vscode.Position(lineI, 0),
+                        new vscode.Position(lineI, line.length)), value: outLine,
+                    });
+                  }
+                  break;
+              }
             }
-          }
-          // run after all the selected lines
-          if (utilDef.utilType === TIXUtilityType.utImmutableLinesUtility) {
-            utilFunc(up);
+            // run after all the selected lines
+            if (utilDef.utilType === TIXUtilityType.utImmutableLinesUtility) {
+              utilFunc(up);
 
-          } else if (utilDef.utilType === TIXUtilityType.utLinesUtility) {
-            const outLines = utilFunc(up) as string[];
-            const outRg = new vscode.Range(new vscode.Position(lineMin, 0),
-              new vscode.Position(lineMax, up.doc.lineAt(lineMax).text.length));
-            up.changes.push({ location: outRg, value: outLines.join('\n') });
+            } else if (utilDef.utilType === TIXUtilityType.utLinesUtility) {
+              const outLines = utilFunc(up) as string[];
+              const outRg = new vscode.Range(new vscode.Position(lineMin, 0),
+                new vscode.Position(lineMax, up.doc.lineAt(lineMax).text.length));
+              up.changes.push({ location: outRg, value: outLines.join('\n') });
           }
 
           break;
@@ -249,11 +257,11 @@ export namespace um {
               }
 
               // processes the last line of a selection
-              addInputLine(up, up.doc.lineAt(sel.end.line).text.substr(0, sel.end.character),
+              addInputLine(up, up.doc.lineAt(sel.end.line).text.substring(0, sel.end.character),
                 TIXAddLineStage.lastLine);
             } else {
               // processes a single line selection
-              addInputLine(up, up.intext.substr(0, sel.end.character - sel.start.character),
+              addInputLine(up, up.intext.substring(0, sel.end.character - sel.start.character),
                 TIXAddLineStage.firstLine);
             }
           }

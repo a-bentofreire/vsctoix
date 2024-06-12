@@ -1,7 +1,7 @@
 'use strict';
 
 // ------------------------------------------------------------------------
-// Copyright (c) 2018-2022 Alexandre Bento Freire. All rights reserved.
+// Copyright (c) 2018-2024 Alexandre Bento Freire. All rights reserved.
 // ------------------------------------------------------------------------
 
 import { um } from './utilitymanager';
@@ -192,7 +192,7 @@ export namespace lineutilities {
       sp: um.TIXSelPolicy.All,
     },
       (up): string => up.intext !== '' && up.intext[0] === ' ' ?
-        up.intext.substr(1) : up.intext);
+        up.intext.substring(1) : up.intext);
   }
 
   // ------------------------------------------------------------------------
@@ -221,7 +221,7 @@ export namespace lineutilities {
         }
         at += start;
       }
-      line = line.substr(0, at) + '\n' + line.substring(at);
+      line = line.substring(0, at) + '\n' + line.substring(at);
       start = at + 1;
     }
     return line;
@@ -242,7 +242,7 @@ export namespace lineutilities {
           return up.inlines;
         }
         const toBreakWords = userInput[userInput.length - 1] === '/';
-        const sMaxChars = userInput.substr(0, userInput.length - (toBreakWords ? 1 : 0));
+        const sMaxChars = userInput.substring(0, userInput.length - (toBreakWords ? 1 : 0));
         const maxChars = parseInt(sMaxChars);
         if (maxChars === 0) {
           return up.inlines;
@@ -274,29 +274,23 @@ export namespace lineutilities {
   export function replaceRecipes(): void {
 
     const recipes = um.getConfig('replaceRecipes') as TRecipe[];
-    let recipeNames = recipes.map((item: object, index: number) => `${index + 1} - ${item['name']}`);
+    const recipeNames = recipes.map((item: object, index: number) => `${index + 1}. ${item['name']}`);
     um.utilityManagerWithUserInputs({
       utilType: um.TIXUtilityType.utLinesUtility,
     },
-      // @TODO: Find a better way to display info to the user
-      [{ prompt: "Type the recipe number or name | " + recipeNames.join(' | ') }],
+      [{
+        prompt: "Type the recipe number or name",
+        items: recipeNames
+      }],
       (up): string[] => {
-        const recipes = um.getConfig('replaceRecipes') as TRecipe[];
-        const userInput = up.userinputs[0];
-        let userSelIndex = -1;
-        if (userInput.match(/^\s*\d+\s*$/) !== null) {
-          userSelIndex = parseInt(userInput, 10) - 1;
-        } else {
-          userSelIndex = recipes.findIndex((recipe) => recipe.name === userInput);
-        }
-
-        if (userSelIndex >= 0 && userSelIndex < recipes.length) {
-          const recipe = recipes[userSelIndex];
+        if (up.userinputs[0] != '') {
+          const recipes = um.getConfig('replaceRecipes') as TRecipe[];
+          const recipe = recipes[parseInt(up.userinputs[0].replace(/^(\d+)\..*$/, "$1"), 10) - 1];
           const isExpression = recipe.isExpression !== false;
           const regPattern = recipe.isRegExp !== false ?
             new RegExp(recipe.pattern, recipe.ignoreCase === true ? 'i' : undefined) : recipe.pattern;
           const replaceWith = recipe.replaceWith;
-          let resLines = [];
+          const resLines = [];
           up.inlines.forEach((line: string, index: number) => {
             const replaceResult = line.replace(regPattern, replaceWith);
             resLines.push(isExpression ? ep.processExpression(replaceResult, index, line)

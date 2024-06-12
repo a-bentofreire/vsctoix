@@ -1,7 +1,7 @@
 'use strict';
 
 // ------------------------------------------------------------------------
-// Copyright (c) 2018-2022 Alexandre Bento Freire. All rights reserved.
+// Copyright (c) 2018-2024 Alexandre Bento Freire. All rights reserved.
 // ------------------------------------------------------------------------
 
 /*
@@ -128,6 +128,7 @@ function runGenerator(): void {
               valueKeyword = '"' + valueKeyword.trim() + '"';
               if (keywords.indexOf(valueKeyword) === -1) { keywords.push(valueKeyword); }
             });
+            break;
 
           case 'eg':
             utility.eg = value;

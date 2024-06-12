@@ -153,4 +153,4 @@ MIT License
 
 ## Copyrights  
   
-© 2022 [Alexandre Bento Freire](https://www.a-bentofreire.com)  
+© 2022-2024 [Alexandre Bento Freire](https://www.a-bentofreire.com)  

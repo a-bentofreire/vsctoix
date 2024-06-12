@@ -1,7 +1,7 @@
 'use strict';
 
 // ------------------------------------------------------------------------
-// Copyright (c) 2018-2022 Alexandre Bento Freire. All rights reserved.
+// Copyright (c) 2018-2024 Alexandre Bento Freire. All rights reserved.
 // ------------------------------------------------------------------------
 
 export namespace ep {
@@ -26,12 +26,12 @@ export namespace ep {
   // https://stackoverflow.com/questions/10830357/javascript-toisostring-ignores-timezone-offset
   export function getLocalISOTimeDate() {
     const tzoffset = (new Date()).getTimezoneOffset() * 60000; // offset in milliseconds
-    return (new Date(Date.now() - tzoffset)).toISOString().substr(0, 19).replace('T', ' ');
+    return (new Date(Date.now() - tzoffset)).toISOString().substring(0, 19).replace('T', ' ');
   }
 
 
   export function ISODate(): string {
-    return getLocalISOTimeDate().substr(0, 10);
+    return getLocalISOTimeDate().substring(0, 10);
   }
 
   export function ISOTimeDate(): string {
@@ -52,7 +52,7 @@ export namespace ep {
     switch (macro) {
       case 'upper': return inpText.toUpperCase();
       case 'lower': return inpText.toLowerCase();
-      case 'capitalize': return inpText[0].toUpperCase() + inpText.substr(1);
+      case 'capitalize': return inpText[0].toUpperCase() + inpText.substring(1);
       case 'length': return inpText.length.toString();
       case 'regnize': return regnize(inpText, true);
       case 'isodate': return ISODate();

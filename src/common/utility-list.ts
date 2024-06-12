@@ -1,7 +1,7 @@
 'use strict';
 
 // ------------------------------------------------------------------------
-// Copyright (c) 2018-2022 Alexandre Bento Freire. All rights reserved.
+// Copyright (c) 2018-2024 Alexandre Bento Freire. All rights reserved.
 // ------------------------------------------------------------------------
 
 import { transformutilities } from './transformutilities';
