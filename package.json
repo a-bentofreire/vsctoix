@@ -2,7 +2,7 @@
 	"name": "vsctoix",
 	"displayName": "vsctoix",
 	"description": "extract,join,split,encode,mix,change case and slash,del dup,regex, and more",
-	"version": "1.8.2",
+	"version": "1.8.3",
 	"publisher": "a-bentofreire",
 	"keywords": [
 		"transform",
@@ -40,7 +40,7 @@
 	"engines": {
 		"vscode": "^1.90.0"
 	},
-	"homepage": "https://devpieces.a-bentofreire.com/projects/vsctoix/",
+	"homepage": "https://www.devpieces.com/projects/vsctoix/",
 	"bugs": "https://github.com/a-bentofreire/vsctoix/issues",
 	"repository": {
 		"type": "git",
