@@ -1,8 +1,8 @@
 {
 	"name": "vsctoix",
-	"displayName": "vsctoix",
+	"displayName": "VscToIX",
 	"description": "extract,join,split,encode,mix,change case and slash,del dup,regex, and more",
-	"version": "1.8.4",
+	"version": "1.8.5",
 	"publisher": "a-bentofreire",
 	"keywords": [
 		"transform",
@@ -33,14 +33,14 @@
 	"readme": "README.md",
 	"author": {
 		"name": "Alexandre Bento Freire",
-		"email": "devpieces@a-bentofreire.com",
+		"email": "devtoix@a-bentofreire.com",
 		"url": "https://github.com/a-bentofreire"
 	},
 	"license": "SEE LICENSE IN LICENSE.txt",
 	"engines": {
 		"vscode": "^1.90.0"
 	},
-	"homepage": "https://www.devpieces.com/en/projects/vsctoix/",
+	"homepage": "https://www.devtoix.com/en/projects/vsctoix/",
 	"bugs": "https://github.com/a-bentofreire/vsctoix/issues",
 	"repository": {
 		"type": "git",

@@ -1,6 +1,6 @@
 # VS Code Utility Belt
 
-Strap on the belt and become a Ninja Developer with these 33 utilities.  
+[VscToIX](https://www.devtoix.com/en/projects/vsctoix) is a Visual Studio Code utility belt packed with 33 utilities.  
 This extension is also available for
 Brackets([bracketsix](https://github.com/a-bentofreire/bracketstoix))
 and Atom([atomtoix](https://atom.io/packages/atomtoix)).  
