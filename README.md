@@ -1,9 +1,15 @@
 # VS Code Utility Belt
 
-[VscToIX](https://www.devtoix.com/en/projects/vsctoix) is a Visual Studio Code utility belt packed with 33 utilities.  
-This extension is also available for
-Brackets([bracketsix](https://github.com/a-bentofreire/bracketstoix))
-and Atom([atomtoix](https://atom.io/packages/atomtoix)).  
+[VscToIX](https://www.devtoix.com/en/projects/vsctoix) is a open source Visual Studio Code and Cursor AI extension.  
+
+If you find this project useful, please, read the [Support this Project](#support-this-project) on how to contribute.  
+
+This extension is also available for:
+
+- Linux Mint Xed Editor ([XedToIX](https://www.devtoix.com/en/projects/xedtoix))
+- Brackets and Phoenix Code ([BracketsToIX](https://www.devtoix.com/en/projects/bracketstoix))
+- Atom ([AtomToIX](https://www.devtoix.com/en/projects/atomtoix)).  
+- Xed ([XedToIX](https://www.devtoix.com/en/projects/xedtoix))
   
 If you find this extension useful, please, write a review or add a github star to show your support.  
   
@@ -143,9 +149,20 @@ ex:
   ],
 ```
 
-## Contribute
+## Support this Project
 
-Suggestions for more utilities and bug reports are welcome but don't forget the golden rule: Be Polite!  
+If you find this project useful, consider supporting it:
+
+- Donate:  
+[![Donate via PayPal](https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-rect-paypal-34px.png)](https://www.paypal.com/donate/?business=MCZDHYSK6TCKJ&no_recurring=0&item_name=Support+Open+Source&currency_code=EUR)
+
+- Visit the project [homepage](https://www.devtoix.com/en/projects/vsctoix)
+- Give the project a ⭐ on [Github](https://github.com/a-bentofreire/vsctoix)
+- Spread the word
+- Follow me:
+  - [Github](https://github.com/a-bentofreire)
+  - [LinkedIn](https://www.linkedin.com/in/abentofreire)
+  - [Twitter/X](https://x.com/devtoix)
 
 ## License
 

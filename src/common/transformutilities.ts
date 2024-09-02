@@ -92,7 +92,7 @@ export namespace transformutilities {
         }
 
 
-        // test for upperscore case
+        // test for uppercase case
         if (p1.match(/^_*[A-Z].*_/) !== null) {
           // => cycle to underscore
           return p1.toLowerCase();
@@ -122,7 +122,7 @@ export namespace transformutilities {
         // test for camel case (should be after symbol cases)
         const m2 = p1.match(/^(_*)([^A-Z_]+[A-Z].*)$/);
         if (m2 !== null) {
-          // => cycle to upperscore
+          // => cycle to uppercase
           return m2[1] + m2[2].replace(/([A-Z]+)/g,
             (_match: string, p2: string) => '_' + p2).toUpperCase();
         }
