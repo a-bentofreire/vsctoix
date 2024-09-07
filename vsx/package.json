@@ -2,7 +2,7 @@
     "name": "vsctoix",
     "displayName": "EditorToIX",
     "description": "extract,join,split,encode,mix,change case and slash,del dup,regex, and more",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "publisher": "a-bentofreire",
     "keywords": [
         "transform",
@@ -236,7 +236,7 @@
         ]
     },
     "scripts": {
-        "vscode:prepublish": "npm run compile",
+        "vscode:prepublish": "npm run compile; cp ../README.md README.md",
         "compile": "tsc -p ./",
         "watch": "tsc -watch -p ./",
         "build-l10n": "vscode-l10n-dev extract --outDir i18n",

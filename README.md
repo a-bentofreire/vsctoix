@@ -1,46 +1,56 @@
-# VS Code Utility Belt
+# Code Editor Utility Belt
 
-[EditorToIX](https://www.devtoix.com/en/projects/vsctoix) is a open source Visual Studio Code and Cursor AI extension.  
+[EditorToIX](https://www.devtoix.com/en/projects/vsctoix) is an open source extension for multiple code editors.
+
+This project was previously named as:
+
+- **VscToIX** on *Visual Studio Code*.
+- **XedToIX** on *Linux Mint Xed*.
+
+It has been renamed to **EditorToIX** and it will be merged with other
+extensions with the same utilities on different code editors into a single github repository.
 
 If you find this project useful, please, read the [Support this Project](#support-this-project) on how to contribute.  
 
+## Availability
+
 This extension is also available for:
 
-- Linux Mint Xed Editor ([XedToIX](https://www.devtoix.com/en/projects/xedtoix))
-- Brackets and Phoenix Code ([BracketsToIX](https://www.devtoix.com/en/projects/bracketstoix))
-- Atom ([AtomToIX](https://www.devtoix.com/en/projects/atomtoix)).  
-- Xed ([XedToIX](https://www.devtoix.com/en/projects/xedtoix))
-  
-If you find this extension useful, please, write a review or add a github star to show your support.  
+- **vsx**: Visual Studio Code, Cursor AI, Google Project IDX, open-vsx.org (**EditorToIX**).
+- **xed**: Linux Mint Xed Editor ([EditorToIX](https://www.devtoix.com/en/projects/xedtoix))
+- **phoenix**: Brackets and Phoenix Code ([BracketsToIX](https://www.devtoix.com/en/projects/bracketstoix))
+- **atom**: Atom ([AtomToIX](https://www.devtoix.com/en/projects/atomtoix)).  
+
+## Demos
   
 - `IX: Cycle Case`: Add a shortcut and cycle between different case modes in a breeze.  
   
-![Cycle Case](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/cycle-case.gif)
+![Cycle Case](https://github.com/a-bentofreire/vsctoix/raw/master/vsx/assets/demo/cycle-case.gif)
   
 - `IX: Extract Text` : Copy text patterns from a document to clipboard.  
   
-![Extract Text](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/extract-text.gif)
+![Extract Text](https://github.com/a-bentofreire/vsctoix/raw/master/vsx/assets/demo/extract-text.gif)
   
 - `IX: Indent One Space`, `IX: Outdent One Space`: Insert or remove one space only at the start of every line regardless of indention mode.  
   
-![Indent/Outdent](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/indent-outdent-lines.gif)
+![Indent/Outdent](https://github.com/a-bentofreire/vsctoix/raw/master/vsx/assets/demo/indent-outdent-lines.gif)
   
 - `IX: Insert Text At Start`: Insert text with macros at the start of every line.  
   
-![Insert Text at Start](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/insert-text-at-start.gif)
+![Insert Text at Start](https://github.com/a-bentofreire/vsctoix/raw/master/vsx/assets/demo/insert-text-at-start.gif)
   
 - `IX: Insert Text At End`: Insert text with macros at the end of every line.  
   
-![Insert Text at End](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/insert-text-at-end.gif)
+![Insert Text at End](https://github.com/a-bentofreire/vsctoix/raw/master/vsx/assets/demo/insert-text-at-end.gif)
   
 - `IX: Join Lines`: Join text with macros.  
   
-![Join Lines](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/join-lines.gif)
+![Join Lines](https://github.com/a-bentofreire/vsctoix/raw/master/vsx/assets/demo/join-lines.gif)
   
 - `IX: Break Line At`: Splits each line in order to be no longer than `Max number of Chars`.
-  The words aren't broken unless it's added `/` at the end the user input. (e.g. `40/`).   
+  The words aren't broken unless it's added `/` at the end the user input. (e.g. `40/`).
   
-![Break Line At](https://github.com/a-bentofreire/vsctoix/raw/master/./assets/demo/break-line-at.gif)
+![Break Line At](https://github.com/a-bentofreire/vsctoix/raw/master/vsx/assets/demo/break-line-at.gif)
   
 ## Utilities
 
@@ -62,7 +72,7 @@ If you find this extension useful, please, write a review or add a github star t
 |Underscore To Dash|**before**: `find_deep_first`<br>**after**: `find-deep-first`|
 |Regnize<br>**Adds slash to regular expression metachars**|**before**: `(\w+)[A-Z]a*b+text`<br>**after**: `\(\\w\+\)\[A-Z\]a\*b\+text`|
 |Header To Bookmark<br>**Converts markdown header text to Html Bookmark**|**before**: `Is this the header 你好?`<br>**after**: `is-this-the-header-你好`|
-|Mixer<br>**Mixes lines of different sections.**|**before**:<br>`// section`<br>`abc`<br>`cde`<br>`// end-section`<br>` // section`<br>`123`<br>`345`<br>` // section`<br>**after**:<br>`abc`<br>`123`<br>`cde`<br>`345`|
+|Mixer<br>**Mixes lines of different sections.**|**before**:<br>`// section`<br>`abc`<br>`cde`<br>`// end-section`<br>`// section`<br>`123`<br>`345`<br>`// section`<br>**after**:<br>`abc`<br>`123`<br>`cde`<br>`345`|
 |Remove Duplicated Lines<br>**Removes consecutive duplicated lines**|**before**:<br>`first`<br>`second`<br>`second`<br><br>**after**:<br><br>`first`<br>`second`|
 |Remove Empty Lines|**before**:<br>`first`<br><br>`second`<br><br>**after**:<br><br>`first`<br>`second`|
 |Join Lines<br>**Joins lines adding the computed expression at the end of every line**|**before**:<br>`red`<br>`green`<br><br>**after**:<br>`expr:(x\c{X0A}),`<br>`red(x0A),green(x0B)`|
@@ -82,6 +92,8 @@ If you find this extension useful, please, write a review or add a github star t
 
 ## Selection Policies
 
+### [vsx](#availability)
+
 Every utility supports multiple cursors and multiple line selections.  
 However, It differs in the way each utility category handles the selections.  
 For every cursor, each line is process individually and the counter is increased per line.  
@@ -95,7 +107,7 @@ For every cursor, each line is process individually and the counter is increased
   - If no text is selected then the cursor is the insertion point.  
   - If multiple lines are selected then is inserted at start/end of every line.  
 
-## Expressions
+## Expressions [vsx](#availability)
 
 Some of the utilities support expressions  
 An expression is a text supporting the following metachars:  
@@ -118,7 +130,7 @@ An expression is a text supporting the following metachars:
   - isotimedate  
   - uuid  
 
-## Replace Recipes
+## Replace Recipes [vsx](#availability)
 
 Replace Recipes must be added manually to the `settings.json`.  
 This tool is still in beta phase.  
@@ -132,8 +144,8 @@ This tool is still in beta phase.
 |isExpression|boolean| if `false` then result doesn't exec the expression engine |
 |ignoreCase|boolean| if `true` and `isRegExp` uses `ignore case` option |
 
-
 ex:
+
 ```json
 "vsctoix.replaceRecipes": [
     {
@@ -157,7 +169,10 @@ If you find this project useful, consider supporting it:
 [![Donate via PayPal](https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-rect-paypal-34px.png)](https://www.paypal.com/donate/?business=MCZDHYSK6TCKJ&no_recurring=0&item_name=Support+Open+Source&currency_code=EUR)
 
 - Visit the project [homepage](https://www.devtoix.com/en/projects/vsctoix)
-- Give the project a ⭐ on [Github](https://github.com/a-bentofreire/vsctoix)
+- Give the project a ⭐ on [Github](https://github.com/a-bentofreire/bracketstoix)
+
+   Note: This project will be merged into a single repository, which is now [BracketsToIX](https://github.com/a-bentofreire/bracketstoix), but it will be renamed into EditorToIX.
+
 - Spread the word
 - Follow me:
   - [Github](https://github.com/a-bentofreire)
