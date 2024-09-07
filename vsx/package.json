@@ -1,8 +1,8 @@
 {
     "name": "vsctoix",
-    "displayName": "VscToIX",
+    "displayName": "EditorToIX",
     "description": "extract,join,split,encode,mix,change case and slash,del dup,regex, and more",
-    "version": "1.8.6",
+    "version": "2.0.0",
     "publisher": "a-bentofreire",
     "keywords": [
         "transform",
